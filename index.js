@@ -13,7 +13,7 @@ const port = 8080;
 
 //
 app.get("/", (req, res) => {
-    res.render("login")
+    res.render("studentLogin")
 });
 
 app.listen(port, () => {
