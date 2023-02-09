@@ -1,0 +1,16 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    color: rgb(0, 240, 44);
+    font-size: large;
+    text-align: center;
+    
+}
+/* .shadow-box{
+    top: 50px;
+} */
+.login-bg{
+    height: 100%;
+    align-items: center;
+    
+}
