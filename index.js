@@ -8,6 +8,7 @@ const session = require("express-session");
 const passport = require("passport");
 require("dotenv").config();
 
+
 // Local modules
 const PageRouter = require("./routers/PageRouter");
 
@@ -29,5 +30,5 @@ app.use(express.json());
 app.use("/", new PageRouter(express).router());
 
 app.listen(port, () => {
-    console.log(`Running at port ${port}`);
+  console.log(`Running at http://localhost:${port}`);
 });
