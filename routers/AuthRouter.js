@@ -8,19 +8,27 @@ class AuthRouter {
     let router = this.express.Router();
 
     router.post(
-      "/signup",
+      "/userReg",
       this.passport.authenticate("local-signup", {
-        successRedirect: "/login",
-        failureRedirect: "/signup",
+        successRedirect: "/userlogin",
+        failureRedirect: "/userReg",
         session: false, // prevent auto-login after sign up
       })
     );
 
     router.post(
-      "/login",
+      "/userlogin",
       this.passport.authenticate("local-login", {
-        successRedirect: "/",
-        failureRedirect: "/login",
+        successRedirect: "/courseList",
+        failureRedirect: "/userlogin",
+      })
+    );
+
+    router.post(
+      "/instructorlogin",
+      this.passport.authenticate("local-login-instructor", {
+        successRedirect: "/instructorManageCourse",
+        failureRedirect: "/instructorlogin",
       })
     );
 
@@ -29,7 +37,7 @@ class AuthRouter {
         if (err) {
           return err;
         }
-        res.redirect("/login");
+        res.redirect("/");
       });
     });
 

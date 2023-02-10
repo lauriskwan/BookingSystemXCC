@@ -14,7 +14,14 @@ module.exports = (app, knex, passport) => {
   passport.deserializeUser(async (id, done) => {
     // Take in the id from the session and use the id to verify the user
     const user = await knex("user_login").where({ id }).first();
-    return user ? done(null, user) : done(null, false);
+    const instructor = await knex("instructor_login").where({ id }).first();
+    // return user ? done(null, user) : done(null, false);
+    // return (user || instructor) ? will not work as if instructor returns true, session cannot deserialize done(null, >> user <<)
+    return user
+      ? done(null, user)
+      : instructor
+      ? done(null, instructor)
+      : done(null, false);
   });
 
   require("./strategy/local-strategy")(passport, knex);

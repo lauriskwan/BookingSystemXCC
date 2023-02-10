@@ -18,6 +18,7 @@ class PageRouter {
     router.get("/instructorLogin", this.instructorLogin.bind(this));
     router.get(
       "/instructorManageCourse",
+      this.instructorIsLoggedIn,
       this.instructorManageCourse.bind(this)
     );
     router.get("/instructorAddCourse", this.instructorAddCourse.bind(this));
@@ -90,6 +91,28 @@ class PageRouter {
   instructorProfile(req, res) {
     console.log("Directing to instructor's profile page.");
     res.render("instructor/instructorProfile", { layout: "main_instructor" });
+  }
+
+  // authentication
+
+  userIsLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/userLogin");
+  }
+
+  userNotLoggedIn(req, res, next) {
+    if (!req.isAuthenticated()) return next();
+    res.redirect("/courseList");
+  }
+
+  instructorIsLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/instructorLogin");
+  }
+
+  instructorNotLoggedIn(req, res, next) {
+    if (!req.isAuthenticated()) return next();
+    res.redirect("/instructorManageCourse");
   }
 }
 
