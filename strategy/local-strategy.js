@@ -36,7 +36,9 @@ module.exports = (passport, knex) => {
           phone_number,
           email,
         };
-        const userID = await knex("users").insert(newUser).returning("id")[0]["id"]; // get user_login the foreign key from user.id
+        const userID = await knex("users").insert(newUser).returning("id")[0][
+          "id"
+        ]; // get user_login the foreign key from user.id
 
         // Insert credentials to user_login
         let newUserLoginInfo = {
@@ -54,7 +56,7 @@ module.exports = (passport, knex) => {
     )
   );
 
-  // Login
+  // Login (user)
   passport.use(
     "local-login",
     new LocalStrategy(
@@ -71,6 +73,31 @@ module.exports = (passport, knex) => {
         }
         // hashing the entered password and comparing with the hash password from the database
         const result = await bcrypt.compare(password, user.password);
+        return result
+          ? done(null, user)
+          : done(null, false, { message: "Incorrect username or password." });
+      }
+    )
+  );
+
+  // Login (instructor)
+  passport.use(
+    "local-login-instructor",
+    new LocalStrategy(
+      // { usernameField: "email" },
+      async (username, password, done) => {
+        // Check if the user exists in the database
+        const user = await knex("instructor_login").where({ username }).first(); // {id: 1, username: a, password: 2@10.....}
+
+        if (!user) {
+          // if user does not exists then don't authenticate the user
+          return done(null, false, {
+            message: "Username does not exist.",
+          });
+        }
+
+        // bcrypt.compare will not work for instructor as password hashing in excluded from instructor registration process.
+        const result = password === user.password;
         return result
           ? done(null, user)
           : done(null, false, { message: "Incorrect username or password." });
