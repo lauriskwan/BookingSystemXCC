@@ -13,11 +13,15 @@ class PageRouter {
     router.get("/courseList", this.courseList.bind(this));
     router.get("/courseDetail", this.courseDetail.bind(this));
     router.get("/userProfile", this.userProfile.bind(this));
+    router.get("/userCourse", this.userCourse.bind(this));
 
-     router.get("/instructorLogin", this.instructorLogin.bind(this));
-     router.get("/instructorManageCourse", this.instructorManageCourse.bind(this));
-     router.get("/instructorAddCourse", this.instructorAddCourse.bind(this));
-     router.get("/instructorProfile", this.instructorProfile.bind(this));
+    router.get("/instructorLogin", this.instructorLogin.bind(this));
+    router.get(
+      "/instructorManageCourse",
+      this.instructorManageCourse.bind(this)
+    );
+    router.get("/instructorAddCourse", this.instructorAddCourse.bind(this));
+    router.get("/instructorProfile", this.instructorProfile.bind(this));
 
     return router;
   }
@@ -53,7 +57,7 @@ class PageRouter {
 
   courseDetail(req, res) {
     console.log("Directing to course detail page.");
-    res.render("user/courseList");
+    res.render("user/courseDetail");
   }
 
   userCourse(req, res) {
@@ -85,7 +89,7 @@ class PageRouter {
 
   instructorProfile(req, res) {
     console.log("Directing to instructor's profile page.");
-    res.render("user/instructorProfile", { layout: "main_instructor" });
+    res.render("instructor/instructorProfile", { layout: "main_instructor" });
   }
 }
 
