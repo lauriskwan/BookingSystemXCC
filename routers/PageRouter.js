@@ -91,22 +91,22 @@ class PageRouter {
 
   userIsLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
-    res.redirect("/userLogin");
+    res.redirect("/login");
   }
 
   userNotLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) return next();
-    res.redirect("/courseList");
+    res.redirect("/course");
   }
 
   instructorIsLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
-    res.redirect("/instructorLogin");
+    res.redirect("/instructor/login");
   }
 
   instructorNotLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) return next();
-    res.redirect("/instructorManageCourse");
+    res.redirect("/instructor/manage_course");
   }
 }
 
