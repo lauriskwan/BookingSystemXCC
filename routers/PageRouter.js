@@ -6,23 +6,22 @@ class PageRouter {
   router() {
     let router = this.express.Router();
     router.get("/", this.homepage.bind(this));
-    router.get("/userReg", this.registration.bind(this));
-    router.get("/logout", this.logout.bind(this));
+    router.get("/signup", this.registration.bind(this));
 
-    router.get("/userlogin", this.userLogin.bind(this));
-    router.get("/courseList", this.courseList.bind(this));
-    router.get("/courseDetail", this.courseDetail.bind(this));
-    router.get("/userProfile", this.userProfile.bind(this));
-    router.get("/userCourse", this.userCourse.bind(this));
+    router.get("/login", this.userLogin.bind(this));
+    router.get("/mycourse", this.userCourse.bind(this));
+    router.get("/course", this.courseList.bind(this));
+    router.get("/course/detail", this.courseDetail.bind(this));
+    router.get("/profile", this.userProfile.bind(this));
 
-    router.get("/instructorLogin", this.instructorLogin.bind(this));
+    router.get("/instructor/login", this.instructorLogin.bind(this));
     router.get(
-      "/instructorManageCourse",
+      "/instructor/manage_course",
       this.instructorIsLoggedIn,
       this.instructorManageCourse.bind(this)
     );
-    router.get("/instructorAddCourse", this.instructorAddCourse.bind(this));
-    router.get("/instructorProfile", this.instructorProfile.bind(this));
+    router.get("/instructor/add_course", this.instructorAddCourse.bind(this));
+    router.get("/instructor/profile", this.instructorProfile.bind(this));
 
     return router;
   }
@@ -39,16 +38,16 @@ class PageRouter {
     res.render("userReg", { layout: "loginpage" });
   }
 
-  logout(req, res) {
-    res.redirect("/");
-    //res.logOut((err)=>{...})
-  }
-
   // user
 
   userLogin(req, res) {
     console.log("Directing to user login page.");
     res.render("user/userLogin", { layout: "loginpage" });
+  }
+
+  userCourse(req, res) {
+    console.log("Directing to user's course page.");
+    res.render("user/myCourse");
   }
 
   courseList(req, res) {
@@ -59,11 +58,6 @@ class PageRouter {
   courseDetail(req, res) {
     console.log("Directing to course detail page.");
     res.render("user/courseDetail");
-  }
-
-  userCourse(req, res) {
-    console.log("Directing to user's course page.");
-    res.render("user/myCourse");
   }
 
   userProfile(req, res) {
