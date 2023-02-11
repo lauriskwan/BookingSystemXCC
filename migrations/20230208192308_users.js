@@ -10,7 +10,7 @@ exports.up = function(knex) {
     table.string("phone_number");
     table.string("email").notNullable();
     table.timestamp("joined_at").defaultTo(knex.fn.now());
-    table.boolean("is_member").notNullable();
+    table.boolean("is_member").defaultTo(false);
     table.date("expiry");
   });
 };
