@@ -1,7 +1,13 @@
 <h2>Instructor Profile</h2>
 
 {{!-- partial/userInfoForm --}}
-{{>userInfoForm}}
+<div class="container">
+    <div class="row d-flex justify-content-start m-3">
+        <form action="/edit" method="post">
+            {{>userInfoForm}}
+        </form>
+    </div>
+</div>
 
     <div class="container d-flex justify-content-center m-3">
         <div class="row ">
