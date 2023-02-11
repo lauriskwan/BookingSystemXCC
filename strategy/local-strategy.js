@@ -36,15 +36,14 @@ module.exports = (passport, knex) => {
           phone_number,
           email,
         };
-        const userID = await knex("users").insert(newUser).returning("id")[0][
-          "id"
-        ]; // get user_login the foreign key from user.id
+        const userID = await knex("users").insert(newUser).returning("id");
+        const user_id = userID[0]["id"]; // get user_login the foreign key from user.id
 
         // Insert credentials to user_login
         let newUserLoginInfo = {
           username,
           password: hash,
-          userID,
+          user_id,
         };
         const loginID = await knex("user_login")
           .insert(newUserLoginInfo)
