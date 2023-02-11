@@ -1,58 +1,96 @@
-<h2>Student Register</h2>
+{{!-- <h2>Student Register</h2>
 
 
 
-<div class="container">
-    <div class="row d-flex justify-content-start m-3">
-        <h3>User Sign Up :</h3>
-        <form action="/signup" method="post">
-            <div class="col-md-6 position-relative top-50 start-50 end-50 translate-middle m-2 p-5"
-                style="border:1px solid black;background-color:rgba(240, 255, 255, 0.443);">
-                <ul class="text-start" style="list-style-type: none;">
-                    <li>
-                        <label for="username">Username:</label>
-                        <input type="text" name="username" id="username" placeholder="" size="25" minlength="5" required>
-                    </li>
-                    <li>
-                        <label for="user_pwd">Password:</label>
-                        <input type="password" name="password" id="password" placeholder="" size="25" minlength="5" required>
-                    </li>
-                    <li>
-                        <label for="user_pwd">Confirm your password:</label>
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="" size="25" minlength="5"
-                            required>
-                    </li>
-                    <li>
-                        <label for="name">Your Name:</label>
-                        <input type="text" name="name" id="name" placeholder="" size="20" minlength="3" required>
-                    </li>
-                    <li>
-                        <label for="gender">Gender:</label>
-                        <select id="gender" name="gender" required>
-                            <option value="" name="" id=""></option>
-                            <option value="T" name="gender" id="male">Male</option>
-                            <option value="F" name="gender" id="female">Female</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label for="phone_number">Phone number:</label>
-                        <input type="tel" name="phone_number" id="phone_number" placeholder="" size="25" minlength="8"
-                            maxlength="16" pattern="[0-9]{8}" required>
-                    </li>
-                    <li>
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="" size="30" minlength="5" maxlength="30"
-                            pattern="email" required>
-                    </li>
-                    <br><br>
-                    <button type="reset">Reset</button>
-                    <button type="submit" value="submit">Submit</button>
-                </ul>
+
+<a href="./">back</a> --}}
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                        <form action="/signup" method="post">
+                            <div class="row">
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
+                                    <div class="form-outline datepicker w-100">
+                                        <input type="text" class="form-control form-control-lg" id="name" name="name"
+                                            required />
+                                        <label for="name" class="form-label">Name *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="email" name="email" class="form-control form-control-lg"
+                                            required />
+                                        <label class="form-label" for="email">Email *</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div class="form-outline">
+                                        <input type="tel" id="phone_number" name="phone_number" class="form-control form-control-lg" />
+                                        <label class="form-label" for="phone_number">Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <h6 class="mb-2 pb-1">Gender *</h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                                            value="true" />
+                                        <label class="form-check-label" for="maleGender">Male</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                                            value="false" required />
+                                        <label class="form-check-label" for="femaleGender">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="username" name="username"
+                                            class="form-control form-control-lg" required />
+                                        <label class="form-label" for="username">Username *</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="password" id="password" name="password"
+                                            class="form-control form-control-lg" required />
+                                        <label class="form-label" for="password">Password *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="password" id="confirm_password" name="confirm_password"
+                                            class="form-control form-control-lg" required />
+                                        <label class="form-label" for="confirm_password">Confirm password *</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 mb-4 pt-2">
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            
-
-        </form>
+        </div>
     </div>
-</div>
-<a href="./">back</a>
+</section>
+
