@@ -92,12 +92,13 @@ body {
 }
 .calendar__number {
     font-size: 30px;
-    padding: 20px;
-    display: flex;
+    padding: 0px;
+    margin: 0px;
     align-items: center;
     justify-content: center;
     height: 50px;
     color: #262626;
+    width: calc(100%/7.1);
 
     &:nth-child(7n) {
         color: #ff685d;
