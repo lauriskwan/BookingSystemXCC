@@ -1,52 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mainpage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/mainstyle.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Booking System -Instructor Mode</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
 </head>
+
 <body>
-<!-- Nav bar -->
-<nav class="navbar navbar-expand-lg bg-warning  position-relative" >
-    <div class="container-fluid " style="height:130px;" >
-        {{!-- icon --}}
-        <a class="navbar-brand" href="/instructor/manage_course"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREzHHmc3knHV9Wfi33mxaXrto5VTmH9z9760V086_IxoQgGw9jsIE3EBtVzgwJ0olPn44&usqp=CAU" alt="" srcset="" style="height:130px;width:fit-content;"> </a>
-        {{!-- toggle nav bar --}}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        {{!-- normal nav bar --}}
-        <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav">
-                <li>
-                    <a class="nav-link text-end" href="/instructor/manage_course">Manage Course</a>
-                </li>
-                <li class="nav-item text-end">
-                    <a class="nav-link" href="/instructor/add_course">Add New Course</a>
-                </li>
-                <li>
-                    <a class="nav-link text-end" href="/instructor/profile">Profile</a>
-                </li>
-                <li>
-                    <a class="nav-link text-end" href="/logout">Logout</a>
-                </li>
-                    
-            </ul>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
-</nav>
+    <!-- ***** Preloader End ***** -->
 
-    {{{body}}}
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/mycourse" class="logo d-flex align-items-center justify-content-center">
+                            {{!-- <img src="assets/images/logo.png" alt=""> --}}
+                            <div>
+                                <p>LOGO PLACEHOLDER</p>
+                            </div>
+                        </a>
+                        <!-- ***** Logo End ***** -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-        crossorigin="anonymous"></script>
+                        <div class="logo d-flex align-items-center justify-content-center">
+                            <p>INSTRUCTOR</p>
+                        </div>
+
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="/instructor/course">Course</a></li>
+                            <li><a href="/instructor/manage_course">My course</a></li> <!-- Removed class="active" -->
+                            <li><a href="/instructor/add_course">Course</a></li>
+                            <li><a href="/instructor/profile">Profile</a></li>
+                            <li><a href="/logout">Log out</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-content">
+
+                    {{{body}}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>© Studio 2023
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/assets/js/isotope.min.js"></script>
+    <script src="/assets/js/owl-carousel.js"></script>
+    <script src="/assets/js/tabs.js"></script>
+    <script src="/assets/js/popup.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+
 </body>
+
 </html>

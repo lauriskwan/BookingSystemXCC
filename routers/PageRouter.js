@@ -9,12 +9,13 @@ class PageRouter {
     router.get("/signup", this.registration.bind(this));
 
     router.get("/login", this.userLogin.bind(this));
-    router.get("/mycourse", this.userCourse.bind(this));
+    router.get("/mycourse", this.userIsLoggedIn, this.userCourse.bind(this));
     router.get("/course", this.courseList.bind(this));
     router.get("/course/detail", this.courseDetail.bind(this));
     router.get("/profile", this.userProfile.bind(this));
 
     router.get("/instructor/login", this.instructorLogin.bind(this));
+    router.get("/instructor/course", this.instructorCourseList.bind(this));
     router.get(
       "/instructor/manage_course",
       this.instructorIsLoggedIn,
@@ -35,7 +36,7 @@ class PageRouter {
 
   registration(req, res) {
     console.log("Directing to registration page.");
-    res.render("userReg", { layout: "loginpage" });
+    res.render("userReg", { layout: false });
   }
 
   // user
@@ -70,6 +71,11 @@ class PageRouter {
   instructorLogin(req, res) {
     console.log("Directing to instructor login page.");
     res.render("instructor/instructorLogin", { layout: "loginpage" });
+  }
+
+  instructorCourseList(req, res) {
+    console.log("Directing to instructor course list page.");
+    res.render("instructor/courseList", { layout: "main_instructor" });
   }
 
   instructorManageCourse(req, res) {
