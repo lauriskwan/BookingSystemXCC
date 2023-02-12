@@ -280,11 +280,19 @@ Header Style
 .header-area .main-nav .logo {
   border-right: 1px solid #27292a;
   flex-basis: 25%;
-  margin-right: 5%;
+  /* margin-right: 5%; */
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+}
+
+.header-area .main-nav .logo:nth-child(2) {
+  border: none;
+}
+
+.header-area .main-nav .logo:nth-child(2) p {
+  color: rgba(241, 90, 34, 1);
 }
 
 .header-area .main-nav .logo img {
@@ -460,6 +468,11 @@ Header Style
   .header-area .main-nav .logo {
     position: absolute;
     left: 30px;
+    top: 25px;
+  }
+    .header-area .main-nav .logo:nth-child(2) {
+    position: absolute;
+    left: 250px;
     top: 25px;
   }
   .header-area .main-nav .border-button {

@@ -29,7 +29,7 @@ app.use(
 setupPassport(app, knex, passport);
 
 // Set up root directory
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 // Set up handlebars
 app.engine("handlebars", engine());

@@ -1,15 +1,20 @@
-<h2>User Login</h2>
 
-<div class="container">
-    <div class="row d-flex justify-content-center m-3">
-        <div class="position-relative " style="border:2px solid black; border-radius:100px;width:150px;height:150px;">
-            ICON Here
-        </div>
-    </div>
-    <div class="row">
-        {{>userLoginForm}}
-    </div>
-</div>
+        <form action="/login" method="post">
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="username" id="username" placeholder="username" size="25" minlength="5" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="password" name="password" id="password" placeholder="password" size="25" minlength="5"
+                        required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" value="submit" class="btn" id="btn2">Log In</button>
+                </div>
+            </div>
+        </form>
 
-<a href="./">back</a><br>
-<a href="./mycourse">Login Successfully</a>
