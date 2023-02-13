@@ -29,8 +29,12 @@ Click on calendar to select your course
                 </div>
             </div>
             <div class="row">
+                <form action="/getCourse" method="post" id="get_date_form">
+                    <input id="get_date" type="text" value="day" size="15">
+                </form>
                 <div class="calendar__daynumber col-12 d-flex justify-items-center flex-wrap">
                     {{!-- days will be generated here --}}
+                
                 </div>
             </div> 
         </div>

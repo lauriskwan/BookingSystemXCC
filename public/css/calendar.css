@@ -125,3 +125,7 @@ body {
 .calendar__prevday {
     color: #5c5c5c;
 }
+
+#cnd-month-back,#cnd-month-next{
+    color: #fff;
+}
