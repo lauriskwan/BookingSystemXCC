@@ -53,7 +53,7 @@ const renderCalendar = () => {
   let days = "";
   //get prev month of days
   for (let p = firstweekday; p > 0; p--) {
-    days += `<div class="calendar__number calendar__prevday" day-id="${
+    days += `<div class="calendar__number calendar__prevday" value="${
       prevISOMonth + (prevlastDate - p + 1)
     }">${prevlastDate - p + 1}</div>`;
     $(".calendar__daynumber").html(days);
@@ -64,12 +64,12 @@ const renderCalendar = () => {
       i === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      days += `<div class="calendar__number calendar__number--current" day-id="${
+      days += `<div class="calendar__number calendar__number--current" value="${
         addZero(i) + i
       }">${i}</div>`;
       $(".calendar__daynumber").html(days);
     } else {
-      days += `<div class="calendar__number" day-id="${
+      days += `<div class="calendar__number" value="${
         addZero(i) + i
       }">${i}</div>`;
       $(".calendar__daynumber").html(days);
@@ -77,14 +77,14 @@ const renderCalendar = () => {
   }
   //get next month of days
   for (let n = 1; n <= nextDate; n++) {
-    days += `<div class="calendar__number calendar__nextday" day-id="${
+    days += `<div class="calendar__number calendar__nextday" value="${
       nextISOMonth + "0" + n
     }">${n}</div>`;
     $(".calendar__daynumber").html(days);
   }
   var cnd_childs = document.querySelectorAll(".calendar__number");
   cnd_childs.forEach((el) =>
-    el.addEventListener("click", (e) => console.log(el.getAttribute("day-id")))
+    el.addEventListener("click", (e) => console.log(el.getAttribute("value")))
   );
 };
 renderCalendar();
