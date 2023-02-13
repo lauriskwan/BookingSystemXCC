@@ -119,6 +119,7 @@ input {
 }
 
 #btn2 {
+  border: 1px solid rgba(241, 90, 34, 1);
   background-color: rgba(241, 90, 34, 1);
   color: #fff;
   margin-bottom: 50px;
@@ -126,5 +127,16 @@ input {
 
 #btn3 {
   border: 1px solid rgba(241, 90, 34, 1);
+  color: rgba(241, 90, 34, 1);
+}
+
+#btn1:hover,
+#btn3:hover {
+  background-color: rgba(241, 90, 34, 1);
+  color: #fff;
+}
+
+#btn2:hover {
+  background-color: #fff;
   color: rgba(241, 90, 34, 1);
 }
