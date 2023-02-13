@@ -96,7 +96,7 @@ body {
     justify-content: center;
     height: 4rem;
     color: #262626;
-    width: calc(100%/7);
+    width: calc(100%/7.05);
 }
 
 .calendar__number--current {
