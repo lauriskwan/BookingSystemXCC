@@ -11,11 +11,11 @@ Click on calendar to select your course
         </div>
         <div class="col-8 ">
             <div class="row " style="height:70px;">
-                <div class="col-2 d-flex justify-content-center align-items-end"><span>Back</span></div>
+                <div class="col-2 d-flex justify-content-center align-items-end"><span id="cnd-month-back">Back</span></div>
                 <div class="col-8 d-flex justify-content-center align-items-end">
-                    <h2>February</h2>
+                    <h2 id="cnd-month">February</h2>
                 </div>
-                <div class="col-2 d-flex justify-content-center align-items-end"><span>Next</span></div>
+                <div class="col-2 d-flex justify-content-center align-items-end"><span id="cnd-month-next">Next</span></div>
             </div>
             <div class="row">
                 <div class="calendar__date col-12 text-center">
@@ -30,6 +30,7 @@ Click on calendar to select your course
             </div>
             <div class="row">
                 <div class="calendar__daynumber col-12 d-flex justify-items-center flex-wrap">
+                    {{!-- days will be generated here --}}
                 </div>
             </div> 
         </div>
