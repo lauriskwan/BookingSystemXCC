@@ -9,10 +9,64 @@ font & reset css
 reset
 --------------------------------------------- 
 */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
-pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
-s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
-figure, header, nav, section, article, aside, footer, figcaption {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+div pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+figure,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+figcaption {
   margin: 0;
   padding: 0;
   border: 0;
@@ -40,13 +94,20 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 
-ul, li {
+ul,
+li {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-header, nav, section, article, aside, footer, hgroup {
+header,
+nav,
+section,
+article,
+aside,
+footer,
+hgroup {
   display: block;
 }
 
@@ -54,8 +115,9 @@ header, nav, section, article, aside, footer, hgroup {
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Poppins', sans-serif;
+html,
+body {
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   background-color: #1e1e1e;
   font-size: 16px;
@@ -65,14 +127,19 @@ html, body {
 }
 
 a {
-	color: #CCC;
+  color: #ccc;
   text-decoration: none !important;
 }
 a:hover {
-	color: #F99;
+  color: #f99;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0px;
   margin-bottom: 0px;
   color: #fff;
@@ -102,12 +169,12 @@ Global Styles
 html,
 body {
   background: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body .page-content {
   margin-top: 45px;
-  background-color: rgba(253, 227, 167 ,1);
+  background-color: rgba(253, 227, 167, 1);
   padding: 60px;
   border-radius: 23px;
 }
@@ -128,7 +195,6 @@ p {
   background: rgba(241, 90, 34, 1);
   color: #fff;
 }
-
 
 section {
   margin-top: 120px;
@@ -159,7 +225,7 @@ Pre-loader Style
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.99);
+  background-color: rgba(0, 0, 0, 0.99);
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -181,29 +247,29 @@ Pre-loader Style
 
 @-webkit-keyframes dot {
   50% {
-      -webkit-transform: translateX(96px);
-      transform: translateX(96px);
+    -webkit-transform: translateX(96px);
+    transform: translateX(96px);
   }
 }
 
 @keyframes dot {
   50% {
-      -webkit-transform: translateX(96px);
-      transform: translateX(96px);
+    -webkit-transform: translateX(96px);
+    transform: translateX(96px);
   }
 }
 
 @-webkit-keyframes dots {
   50% {
-      -webkit-transform: translateX(-31px);
-      transform: translateX(-31px);
+    -webkit-transform: translateX(-31px);
+    transform: translateX(-31px);
   }
 }
 
 @keyframes dots {
   50% {
-      -webkit-transform: translateX(-31px);
-      transform: translateX(-31px);
+    -webkit-transform: translateX(-31px);
+    transform: translateX(-31px);
   }
 }
 
@@ -247,8 +313,6 @@ Pre-loader Style
   border-radius: 50%;
 }
 
-
-
 /* 
 ---------------------------------------------
 Header Style
@@ -263,10 +327,10 @@ Header Style
   left: 0;
   right: 0;
   z-index: 100;
-  -webkit-transition: all .5s ease 0s;
-  -moz-transition: all .5s ease 0s;
-  -o-transition: all .5s ease 0s;
-  transition: all .5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 
 .header-area .main-nav {
@@ -334,7 +398,7 @@ Header Style
   border: transparent;
   padding: 13px 10px;
   border-radius: 18px;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }
 
 .header-area .main-nav .nav li:hover a,
@@ -470,7 +534,7 @@ Header Style
     left: 30px;
     top: 25px;
   }
-    .header-area .main-nav .logo:nth-child(2) {
+  .header-area .main-nav .logo:nth-child(2) {
     position: absolute;
     left: 250px;
     top: 25px;
@@ -482,7 +546,7 @@ Header Style
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: rgba(241, 90, 34, 1)!important;
+    color: rgba(241, 90, 34, 1) !important;
     opacity: 1;
   }
 
@@ -539,7 +603,7 @@ Header Style
   }
   .header-area .main-nav .nav li a:hover {
     background: #fff !important;
-    color: rgba(241, 90, 34, 1)!important;
+    color: rgba(241, 90, 34, 1) !important;
   }
   .header-area .main-nav .nav li:last-child a img {
     display: none;
@@ -571,12 +635,13 @@ Header Style
     height: auto;
   }
   .header-area .main-nav .nav li.has-sub:after {
-    color: #3B566E;
+    color: #3b566e;
     right: 30px;
     font-size: 14px;
     top: 15px;
   }
-  .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
+  .header-area .main-nav .nav li.submenu:hover ul,
+  .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
 }
@@ -596,171 +661,10 @@ footer p {
 
 footer p a {
   color: #fff;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 footer p a:hover {
-  color: #ec6090;
-}
-
-/* 
----------------------------------------------
-Start Stream Style
---------------------------------------------- 
-*/
-
-.start-stream .heading-section {
-  margin-top: 60px;
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.start-stream .item {
-  padding: 30px;
-  border: 1px solid #444;
-  border-radius: 23px;
-}
-
-.start-stream .item h4 {
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.start-stream .main-button {
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* 
----------------------------------------------
-Live Stream Style
---------------------------------------------- 
-*/
-
-.live-stream {
-  margin-top: 60px;
-  border-radius: 23px;
-  background-color: #1f2122;
-  padding: 30px;
-}
-
-.live-stream .item {
-  margin-bottom: 30px;
-}
-
-.live-stream .thumb {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.live-stream .thumb img {
-  border-radius: 23px; 
-}
-
-.live-stream .thumb:hover .hover-effect {
-  opacity: 1;
-  visibility: visible;
-}
-
-.live-stream .hover-effect {
-  opacity: 0;
-  visibility: hidden;
-  transition: all .4s;
-}
-
-.live-stream .hover-effect .live a { 
-  position: absolute;
-  background-color: rgba(236, 96, 144, 0.9);
-  padding: 5px 10px;
-  border-radius: 23px;
-  color: #fff;
-  font-size: 14px;
-  right: 15px;
-  top: 15px;
-}
-
-.live-stream .hover-effect ul {
-  position: absolute;
-  bottom: 20px;
-  text-align: center;
-  width: 100%;
-}
-
-.live-stream .hover-effect ul li {
-  display: inline-block;
-  margin: 0px 5px;
-}
-
-.live-stream .hover-effect ul li a {
-  background-color: rgba(236, 96, 144, 0.9);
-  padding: 5px 10px;
-  border-radius: 23px;
-  color: #fff;
-  font-size: 14px;
-}
-
-.live-stream .avatar img {
-  margin-right: 15px;
-}
-
-.live-stream span i {
-  color: #fff;
-  background-color: #ec6090;
-  border-radius: 50%;
-  font-size: 12px;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  text-align: center;
-  line-height: 20px;
-  margin-right: 3px;
-}
-
-.live-stream span {
-  font-size: 14px;
-  color: #ec6090;
-}
-
-.live-stream .down-content h4 {
-  margin-top: 8px;
-  font-size: 20px;
-  font-weight: 700;
-  margin-left: 61px;
-}
-
-.live-stream .main-button {
-  text-align: center;
-  margin-bottom: -53px;
-}
-
-/* 
----------------------------------------------
-Featured Banner Style
---------------------------------------------- 
-*/
-
-.feature-banner .thumb {
-  position: relative;
-  max-height: 305px;
-  overflow: hidden;
-  border-radius: 23px;;
-}
-
-.feature-banner .thumb a {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-23px, -23px);
-  width: 46px;
-  height: 46px;
-  background-color: #fff;
-  border-radius: 50%;
-  display: inline-block;
-  text-align: center;
-  line-height: 46px;
   color: #ec6090;
 }
 
@@ -834,4 +738,46 @@ body {
   .gaming-library .item ul li {
     width: 16%;
   }
+}
+
+/* 
+---------------------------------------------
+Profile
+--------------------------------------------- 
+*/
+
+.profileContainer .card {
+  border: none;
+  background-color: transparent;
+  color: #666;
+}
+
+.profileContainer input {
+  background-color: transparent;
+  border: none;
+  border-radius: 0%;
+  border-bottom: 1px solid #666;
+  margin-bottom: 30px;
+}
+
+.profileContainer input:focus {
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+    border-bottom: 1px solid rgba(241, 90, 34, 1);
+}
+
+.profileContainer input:disabled {
+  background-color: transparent;
+color: #666;
+}
+
+.profileContainer .form-outline:focus-within label {
+  color: rgba(241, 90, 34, 1);
+}
+
+.profileContainer .memberInfo {
+  background-color: transparent;
+  border: unset;
+  margin-bottom: 30px;
 }
