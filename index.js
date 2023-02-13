@@ -8,10 +8,19 @@ const session = require("express-session");
 const passport = require("passport");
 require("dotenv").config();
 
-// Local modules
+// Local modules ----------
+
+// Routers
 const PageRouter = require("./routers/PageRouter");
 const AuthRouter = require("./routers/AuthRouter");
+
+// Services
+const UserProfileService = require("./Service/User/ProfileService");
+const userProfileService = new UserProfileService(knex);
+
 const setupPassport = require("./setupPassport");
+
+// ------------------------
 
 // Set up port
 const port = 8080;
@@ -40,7 +49,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Page router
-app.use("/", new PageRouter(express).router());
+app.use("/", new PageRouter(express, userProfileService).router());
 
 // Auth router
 app.use("/", new AuthRouter(express, passport).router());

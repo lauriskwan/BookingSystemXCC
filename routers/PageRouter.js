@@ -1,6 +1,7 @@
 class PageRouter {
-  constructor(express) {
+  constructor(express, userProfileService) {
     this.express = express;
+    this.userProfileService = userProfileService;
   }
 
   router() {
@@ -61,9 +62,32 @@ class PageRouter {
     res.render("user/courseDetail");
   }
 
+  // userProfile(req, res) {
+  //   console.log("Directing to user's profile page.");
+  //   res.render("user/userProfile");
+  //   this.userProfileService
+  //     .display(req.user.id)
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .then(console.log("userProfile@PageRouter"));
+  // }
+
   userProfile(req, res) {
     console.log("Directing to user's profile page.");
-    res.render("user/userProfile");
+    this.userProfileService
+      .display(req.user.id)
+      .then((data) => {
+        res.render("user/userProfile", {
+          name: data[0]["name"],
+          email: data[0]["email"],
+          phone_number: data[0]["phone_number"],
+          joined_at: data[0]["joined_at"],
+          is_member: data[0]["is_member"],
+          expiry: data[0]["expiry"]
+        });
+      })
+      .then(console.log("userProfile@PageRouter"));
   }
 
   // instructor
