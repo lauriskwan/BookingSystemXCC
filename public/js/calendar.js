@@ -13,6 +13,8 @@ const months = [
   "November",
   "December",
 ];
+let today = date.toISOString().slice(0, 10);
+$("#get_date").val(today);
 
 const renderCalendar = () => {
   const lastDate = new Date(
@@ -20,8 +22,9 @@ const renderCalendar = () => {
     date.getMonth() + 1,
     0
   ).getDate();
-  date.setDate(1);
-  let firstweekday = date.getDay();
+  const day1 = new Date();
+  day1.setDate(1);
+  let firstweekday = day1.getDay();
 
   const prevlastDate = new Date(
     date.getFullYear(),
@@ -84,7 +87,10 @@ const renderCalendar = () => {
   }
   var cnd_childs = document.querySelectorAll(".calendar__number");
   cnd_childs.forEach((el) =>
-    el.addEventListener("click", (e) => console.log(el.getAttribute("value")))
+    el.addEventListener("click", (e) => {
+      //console.log(el.getAttribute("value"));
+      $("#get_date").val(el.getAttribute("value"));
+    })
   );
 };
 renderCalendar();
