@@ -764,12 +764,12 @@ Profile
   background-color: transparent;
   outline: none;
   box-shadow: none;
-    border-bottom: 1px solid rgba(241, 90, 34, 1);
+  border-bottom: 1px solid rgba(241, 90, 34, 1);
 }
 
 .profileContainer input:disabled {
   background-color: transparent;
-color: #666;
+  color: #666;
 }
 
 .profileContainer .form-outline:focus-within label {
@@ -780,4 +780,16 @@ color: #666;
   background-color: transparent;
   border: unset;
   margin-bottom: 30px;
+}
+
+.profileContainer .btnProfile {
+  color: #fff;
+  border-radius: 50px;
+  border: 1px solid rgba(241, 90, 34, 1);
+  background-color: rgba(241, 90, 34, 1);
+}
+
+.profileContainer .btnProfile:hover {
+  background-color: rgba(253, 227, 167, 1);
+  color: rgba(241, 90, 34, 1);
 }

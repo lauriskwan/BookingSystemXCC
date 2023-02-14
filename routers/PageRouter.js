@@ -1,12 +1,13 @@
 class PageRouter {
-  constructor(express, userProfileService) {
+  constructor(express, userProfileService, instructorProfileService) {
     this.express = express;
     this.userProfileService = userProfileService;
+    this.instructorProfileService = instructorProfileService;
   }
 
   router() {
     let router = this.express.Router();
-    
+
     // Get
     router.get("/", this.homepage.bind(this));
     router.get("/signup", this.registration.bind(this));
@@ -64,17 +65,6 @@ class PageRouter {
     res.render("user/courseDetail");
   }
 
-  // userProfile(req, res) {
-  //   console.log("Directing to user's profile page.");
-  //   res.render("user/userProfile");
-  //   this.userProfileService
-  //     .display(req.user.id)
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .then(console.log("userProfile@PageRouter"));
-  // }
-
   userProfile(req, res) {
     console.log("Directing to user's profile page.");
     this.userProfileService
@@ -86,7 +76,7 @@ class PageRouter {
           phone_number: data[0]["phone_number"],
           joined_at: data[0]["joined_at"],
           is_member: data[0]["is_member"],
-          expiry: data[0]["expiry"]
+          expiry: data[0]["expiry"],
         });
       })
       .then(console.log("userProfile@PageRouter"));
@@ -116,7 +106,24 @@ class PageRouter {
 
   instructorProfile(req, res) {
     console.log("Directing to instructor's profile page.");
-    res.render("instructor/instructorProfile", { layout: "main_instructor" });
+    this.instructorProfileService.display(req.user.id).then((data) => {
+      var sportsArr = [];
+      data.forEach((element) => {
+        if (sportsArr.length == 0) {
+          sportsArr.push(element["sport_name"]);
+        } else {
+          sportsArr.push(" " + element["sport_name"]);
+        }
+      });
+      res.render("instructor/instructorProfile", {
+        layout: "main_instructor",
+        name: data[0]["name"],
+        email: data[0]["email"],
+        phone_number: data[0]["phone_number"],
+        joined_at: data[0]["joined_at"],
+        sports: sportsArr,
+      });
+    });
   }
 
   // authentication
