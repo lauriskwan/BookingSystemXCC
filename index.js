@@ -6,6 +6,7 @@ const knexFile = require("./knexfile").development;
 const knex = require("knex")(knexFile);
 const session = require("express-session");
 const passport = require("passport");
+const flash = require("connect-flash");
 require("dotenv").config();
 
 // Local modules ----------
@@ -13,6 +14,7 @@ require("dotenv").config();
 // Routers
 const PageRouter = require("./routers/PageRouter");
 const AuthRouter = require("./routers/AuthRouter");
+const ServiceRouter = require("./routers/ServiceRouter")
 
 // Services
 const UserProfileService = require("./Service/User/ProfileService");
@@ -34,6 +36,9 @@ app.use(
   })
 );
 
+// Set up flash
+app.use(flash())
+
 // Set up passport
 setupPassport(app, knex, passport);
 
@@ -53,6 +58,9 @@ app.use("/", new PageRouter(express, userProfileService).router());
 
 // Auth router
 app.use("/", new AuthRouter(express, passport).router());
+
+// Service router
+app.use("/", new ServiceRouter(express, userProfileService).router()); 
 
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);

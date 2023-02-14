@@ -6,6 +6,8 @@ class PageRouter {
 
   router() {
     let router = this.express.Router();
+    
+    // Get
     router.get("/", this.homepage.bind(this));
     router.get("/signup", this.registration.bind(this));
 
