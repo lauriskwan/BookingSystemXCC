@@ -83,23 +83,22 @@ body {
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
-    grid-gap: 0px;
+    grid-gap: 00px;
     box-sizing: border-box;
 }
 
 .calendar__number {
-    font-size: 30px;
-    padding: 20px;
+    padding: 0px;
     margin: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4rem;
-    color: #262626;
     width: calc(100%/7.05);
+    color: #262626;
+    padding-bottom: 8px;
 }
 
-.calendar__number--current {
+.calendar__number--current span{
     background-color: rgb(54, 123, 67);
     border-radius: 100%;
     color: #fff !important;
@@ -110,10 +109,7 @@ body {
     -moz-box-shadow: 7px 5px 22px 1px rgba(0, 0, 0, 0.82); */
 }
 
-.calendar__number:hover:not(.calendar__number--current) {
-    border: 1px solid whitesmoke;
-}
-
+/* sunday CSS */
 .calendar__number:nth-child(7n + 1),
 .calendar__number:nth-child(1),
 .calendar__weekday:nth-child(1) {
@@ -129,3 +125,27 @@ body {
 #cnd-month-back,#cnd-month-next{
     color: #fff;
 }
+.day_circle{
+    font-size: 25px;
+    height: 3rem;
+    width: 3rem;
+    /* padding: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.day_circle:hover:not(.calendar__number--current span) {
+    background-color: rgb(241,90,34);
+    border-radius: 100%;
+    color: #fff !important;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* .day_selected{
+    background-color: rgb(208, 82, 14);
+    border-radius: 100%;
+    color: #fff !important;
+    font-weight: 500;
+    cursor: pointer;
+} */

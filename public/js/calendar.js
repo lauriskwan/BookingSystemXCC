@@ -17,15 +17,12 @@ let today = date.toISOString().slice(0, 10);
 $("#get_date").val(today);
 
 const renderCalendar = () => {
+  // const date = new Date();
   const lastDate = new Date(
     date.getFullYear(),
     date.getMonth() + 1,
     0
   ).getDate();
-  const day1 = new Date();
-  day1.setDate(1);
-  let firstweekday = day1.getDay();
-
   const prevlastDate = new Date(
     date.getFullYear(),
     date.getMonth(),
@@ -37,9 +34,14 @@ const renderCalendar = () => {
     date.getMonth() + 1,
     0
   ).getDay();
+
+  date.setDate(1);
+  date.toLocaleString(); //set back the time zone, after set day1
+
+  let firstweekday = date.getDay();
+
   const nextDate = 7 - lastweekday - 1;
 
-  //for getting day-id
   var ISOdate = date.toISOString().slice(0, 8);
   const addZero = (x) => {
     if (x < 10) {
@@ -58,7 +60,7 @@ const renderCalendar = () => {
   for (let p = firstweekday; p > 0; p--) {
     days += `<div class="calendar__number calendar__prevday" value="${
       prevISOMonth + (prevlastDate - p + 1)
-    }">${prevlastDate - p + 1}</div>`;
+    }"><span class="day_circle">${prevlastDate - p + 1}</span></div>`;
     $(".calendar__daynumber").html(days);
   }
   //get current month of days
@@ -69,12 +71,12 @@ const renderCalendar = () => {
     ) {
       days += `<div class="calendar__number calendar__number--current" value="${
         addZero(i) + i
-      }">${i}</div>`;
+      }"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
     } else {
       days += `<div class="calendar__number" value="${
         addZero(i) + i
-      }">${i}</div>`;
+      }"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
     }
   }
@@ -82,7 +84,7 @@ const renderCalendar = () => {
   for (let n = 1; n <= nextDate; n++) {
     days += `<div class="calendar__number calendar__nextday" value="${
       nextISOMonth + "0" + n
-    }">${n}</div>`;
+    }"><span class="day_circle">${n}</span></div>`;
     $(".calendar__daynumber").html(days);
   }
   var cnd_childs = document.querySelectorAll(".calendar__number");
