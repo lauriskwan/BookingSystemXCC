@@ -11,7 +11,7 @@ exports.up = function(knex) {
     table.string("email").notNullable();
     table.timestamp("joined_at").defaultTo(knex.fn.now());
     table.boolean("is_member").defaultTo(false);
-    table.date("expiry");
+    table.date("expiry").defaultTo("/");
   });
 };
 

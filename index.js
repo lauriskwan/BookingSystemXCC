@@ -17,8 +17,10 @@ const AuthRouter = require("./routers/AuthRouter");
 const ServiceRouter = require("./routers/ServiceRouter")
 
 // Services
-const UserProfileService = require("./Service/User/ProfileService");
+const UserProfileService = require("./Service/User/UserProfileService");
 const userProfileService = new UserProfileService(knex);
+const InstructorProfileService = require("./Service/Instructor/InstructorProfileService")
+const instructorProfileService = new InstructorProfileService(knex);
 
 const setupPassport = require("./setupPassport");
 
@@ -54,13 +56,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Page router
-app.use("/", new PageRouter(express, userProfileService).router());
+app.use("/", new PageRouter(express, userProfileService, instructorProfileService).router());
 
 // Auth router
 app.use("/", new AuthRouter(express, passport).router());
 
 // Service router
-app.use("/", new ServiceRouter(express, userProfileService).router()); 
+app.use("/", new ServiceRouter(express, userProfileService, instructorProfileService).router()); 
 
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
