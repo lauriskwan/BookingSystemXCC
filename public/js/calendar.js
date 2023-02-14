@@ -69,12 +69,12 @@ const renderCalendar = () => {
       i === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      days += `<div class="calendar__number calendar__number--current current_month" value="${
+      days += `<div class="calendar__number calendar__number--current" value="${
         addZero(i) + i
       }"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
     } else {
-      days += `<div class="calendar__number current_month" value="${
+      days += `<div class="calendar__number" value="${
         addZero(i) + i
       }"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
