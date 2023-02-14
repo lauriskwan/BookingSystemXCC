@@ -110,9 +110,9 @@ body {
 }
 
 /* sunday CSS */
-.calendar__number:nth-child(7n + 1),
-.calendar__number:nth-child(1),
-.calendar__weekday:nth-child(1) {
+.current_month:nth-child(7n + 1),
+.current_month:nth-child(1),
+.calendar__day:nth-child(1) {
     color: #cd0000;
     font-weight: 500;
 }
