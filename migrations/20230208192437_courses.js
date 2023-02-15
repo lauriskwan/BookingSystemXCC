@@ -15,7 +15,8 @@ exports.up = function (knex) {
     table.integer("room_id").notNullable();
     table.foreign("room_id").references("rooms.id");
     table.date("date").notNullable();
-    table.time("time").notNullable();
+    table.integer("time_slot_id").notNullable();
+    table.foreign("time_slot_id").references("time_slot.id");
   });
 };
 

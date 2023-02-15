@@ -54,3 +54,47 @@
         </ul>
     </div>
 </form>
+
+<h2>Add Course</h2>
+
+{{!-- partial/userInfoForm --}}
+
+<div class="container py-5 h-100 profileContainer">
+    <div class="row justify-content-around align-items-center h-100">
+        <div class="col-12">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Edit Profile</h3>
+                    <form action="/instructor/profile" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 d-flex align-items-center justify-content-center">
+                                <div class="form-outline datepicker w-100">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="name" name="name"
+                                        value={{name}} disabled required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="text" id="email" name="email" class="form-control form-control-lg"
+                                        value={{email}} required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-outline">
+                                    <label class="form-label" for="phone_number">Phone Number</label>
+                                    <input type="tel" id="phone_number" name="phone_number"
+                                        class="form-control form-control-lg" value={{phone_number}} />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 mb-4 pt-2">
+                                    <input class="btn btnProfile btn-lg" type="submit" value="Submit" />
+                                </div>
+                            </div>
+                    </form>
