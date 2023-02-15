@@ -742,17 +742,21 @@ body {
 
 /* 
 ---------------------------------------------
-Profile
+Profile / Add Course form
 --------------------------------------------- 
 */
 
-.profileContainer .card {
+.profileContainer .card,
+.addCourseContainer .card {
   border: none;
   background-color: transparent;
   color: #666;
 }
 
-.profileContainer input {
+.profileContainer input,
+.addCourseContainer input,
+.addCourseContainer .form-select,
+.addCourseContainer #description {
   background-color: transparent;
   border: none;
   border-radius: 0%;
@@ -760,19 +764,24 @@ Profile
   margin-bottom: 30px;
 }
 
-.profileContainer input:focus {
+.profileContainer input:focus,
+.addCourseContainer input:focus,
+.addCourseContainer .form-select:focus,
+.addCourseContainer #description:focus {
   background-color: transparent;
   outline: none;
   box-shadow: none;
   border-bottom: 1px solid rgba(241, 90, 34, 1);
 }
 
-.profileContainer input:disabled {
+.profileContainer input:disabled,
+.addCourseContainer input:disabled {
   background-color: transparent;
   color: #666;
 }
 
-.profileContainer .form-outline:focus-within label {
+.profileContainer .form-outline:focus-within label,
+.addCourseContainer .form-outline:focus-within label {
   color: rgba(241, 90, 34, 1);
 }
 
@@ -782,14 +791,16 @@ Profile
   margin-bottom: 30px;
 }
 
-.profileContainer .btnProfile {
+.profileContainer .btnProfile,
+.addCourseContainer .btnAddCourse {
   color: #fff;
   border-radius: 50px;
   border: 1px solid rgba(241, 90, 34, 1);
   background-color: rgba(241, 90, 34, 1);
 }
 
-.profileContainer .btnProfile:hover {
+.profileContainer .btnProfile:hover,
+.addCourseContainer .btnAddCourse:hover {
   background-color: rgba(253, 227, 167, 1);
   color: rgba(241, 90, 34, 1);
 }

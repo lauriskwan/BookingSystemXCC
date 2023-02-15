@@ -1,56 +1,119 @@
+<h2>Add Course</h2>
 
-<form action="/instructor/add_course" method="post">
-    <div class="position-relative top-50 start-50 end-50 translate-middle"
-        style="width:300px;height:300px;border:1px solid black;background-color:rgba(240, 255, 255, 0.443);">
-        <h2>Add Course Here</h2>
-        <ul style="list-style-type: none;">
-            <li>
-                <label for="course_name">*Course name:</label>
-                <input type="text" name="course_name" id="course_name" placeholder="" size="25" minlength="5" required>
-            </li>
-            <li>
-                <label for="description">Description:</label>
-                <input type="text" name="description" id="description" placeholder="" size="25" minlength="5">
-            </li>
-            <li>
-                <label for="date">*Date:</label>
-                <input type="date" name="date" id="date" placeholder="" required>
-            </li>
-            <li>
-                <label for="time">*Time:</label>
-                <input type="time" name="time" id="time"  step="1800" required>
-            </li>
-            <li>
-                <label for="instructor">*Instructor:</label>
-                <input type="text" name="instructor" id="instructor_id" placeholder="" size="20" minlength="5" required>
-            </li>
-            <li>
-                <label for="quota">*Quota:</label>
-                <input type="number" name="quota" id="quota" placeholder="" size="15" required>
-            </li>
-            <li>
-                <label for="sport">*Sport:</label>
-                <select id="sport_id" name="sport" required>
-                    <option value="" name="" id=""></option>
-                    <option value="MuayThai" name="MuayThai" id="sport1">MuayThai</option>
-                    <option value="Fitness" name="Fitness" id="sport2">Fitness</option>
-                    <option value="AerialYoga" name="AerialYoga" id="sport3">AerialYoga</option>
-                    <option value="GroundYoga" name="GroundYoga" id="sport4">GroundYoga</option>
-                </select>
-            </li>
-            <li>
-                <label for="room">*Room:</label>
-                <select id="room_id" name="room" required>
-                    <option value="" name="" id=""></option>
-                    <option value="Mongkok" name="Mongkok" id="room1">Mongkok</option>
-                    <option value="Fitness" name="WongTaiSin" id="room2">WongTaiSin</option>
-                    <option value="FortressHill" name="FortressHill" id="room3">FortressHill</option>
-                    <option value="KowloonTong" name="KowloonTong" id="room4">KowloonTong</option>
-                </select>
-            </li>
-            <br><br>
-            <button type="reset">Reset</button>
-            <button type="submit" value="submit">Submit</button>
-        </ul>
+<div class="container py-5 h-100 addCourseContainer">
+    <div class="row justify-content-around align-items-center h-100">
+        <div class="col-12">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Add Course</h3>
+                    <form action="/instructor/add_course" method="post" id="addCourse">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label for="course_name" class="form-label">Course Name</label>
+                                            <input type="text" class="form-control form-control-lg" id="course_name"
+                                                name="course_name" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label for="room" class="form-label">Room</label>
+                                            <select class="form-select form-select-lg" id="room" name="room" required>
+                                                <option selected value="Room 1">Room 1</option>
+                                                <option value="Room 2">Room 2</option>
+                                                <option value="Room 3">Room 3</option>
+                                                <option value="Room 4">Room 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea name="description" form="addCourse" id="description"
+                                                class="form-control form-control-lg"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="quota">Quota (1-20)</label>
+                                            <input type="number" id="quota" name="quota"
+                                                class="form-control form-control-lg" min="1" max="20" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="date">Date</label>
+                                            <input type="date" id="date" name="date"
+                                                class="form-control form-control-lg" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label for="time_slot" class="form-label">Time Slot</label>
+                                            <select class="form-select form-select-lg" id="time_slot" name="time_slot" required>
+                                                <option selected value="09:00 - 10:00">09:00 - 10:00</option>
+                                                <option value="10:15 - 11:15">10:15 - 11:15</option>
+                                                <option value="11:30 - 12:30">11:30 - 12:30</option>
+                                                <option value="14:00 - 15:00">14:00 - 15:00</option>
+                                                <option value="15:15 - 16:15">15:15 - 16:15</option>
+                                                <option value="16:30 - 17:30">16:30 - 17:30</option>
+                                                <option value="17:45 - 18:45">17:45 - 18:45</option>
+                                                <option value="19:00 - 20:00">19:00 - 20:00</option>
+                                                <option value="20:15 - 21:15">20:15 - 21:15</option>
+                                                <option value="21:30 - 22:30">21:30 - 22:30</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-12 mb-4 d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="addCourseImg"></label>
+                                            <div class="box">
+                                                <div class="js--image-preview"></div>
+                                                <div
+                                                    class="upload-options d-flex align-items-center justify-content-center">
+                                                    <p id="uploadImg">Upload Image</p>
+                                                    <label>
+                                                        <input type="file" class="image-upload" accept="image/*"
+                                                            id="addCourseImg" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 mb-4 pt-2">
+                                <input class="btn btnAddCourse btn-lg" type="submit" value="Submit" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</div>

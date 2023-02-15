@@ -2,11 +2,12 @@
 const express = require("express");
 const app = express();
 const { engine } = require("express-handlebars");
+const fs = require("fs");
+const fileUpload = require("express-fileupload");
 const knexFile = require("./knexfile").development;
 const knex = require("knex")(knexFile);
 const session = require("express-session");
 const passport = require("passport");
-const flash = require("connect-flash");
 require("dotenv").config();
 
 // Local modules ----------
@@ -37,6 +38,9 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// Set up file upload
+app.use(fileUpload());;
 
 // Set up flash
 app.use(flash());

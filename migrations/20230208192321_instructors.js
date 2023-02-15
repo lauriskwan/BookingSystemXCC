@@ -7,7 +7,7 @@ exports.up = function (knex) {
     table.increments();
     table.string("name").notNullable();
     table.boolean("gender").notNullable();
-    table.string("phone_number");
+    table.string("phone_number").defaultTo(null);;
     table.string("email").notNullable();
     table.timestamp("joined_at").defaultTo(knex.fn.now());
   });
