@@ -17,6 +17,7 @@ exports.up = function (knex) {
     table.date("date").notNullable();
     table.integer("time_slot_id").notNullable();
     table.foreign("time_slot_id").references("time_slot.id");
+    table.binary("image");
   });
 };
 
