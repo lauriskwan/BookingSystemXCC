@@ -40,10 +40,10 @@ app.use(
 );
 
 // Set up file upload
-app.use(fileUpload());;
+app.use(fileUpload());
 
-// Set up flash
-app.use(flash());
+// // Set up flash
+// app.use(flash());
 
 // Set up passport
 setupPassport(app, knex, passport);
