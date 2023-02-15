@@ -13,7 +13,7 @@ const months = [
   "November",
   "December",
 ];
-let today = date.toISOString().slice(0, 10);
+let today = date.toISOString().slice(0, 10).split("-").reverse().join("-");
 $("#get_date").val(today);
 
 const renderCalendar = () => {
@@ -42,24 +42,34 @@ const renderCalendar = () => {
 
   const nextDate = 7 - lastweekday - 1;
 
-  var ISOdate = date.toISOString().slice(0, 8);
+  var ISOdate = date.toISOString().slice(0, 8).split("-").reverse().join("-");
   const addZero = (x) => {
     if (x < 10) {
-      return ISOdate + "0";
+      return "0" + x + ISOdate;
     } else {
-      return ISOdate;
+      return x + ISOdate;
     }
   };
   const prevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
-  const prevISOMonth = prevMonth.toISOString().slice(0, 8);
+  const prevISOMonth = prevMonth
+    .toISOString()
+    .slice(0, 8)
+    .split("-")
+    .reverse()
+    .join("-");
   const nextMonth = new Date(date.getFullYear(), date.getMonth() + 2, 0);
-  const nextISOMonth = nextMonth.toISOString().slice(0, 8);
+  const nextISOMonth = nextMonth
+    .toISOString()
+    .slice(0, 8)
+    .split("-")
+    .reverse()
+    .join("-");
 
   let days = "";
   //get prev month of days
   for (let p = firstweekday; p > 0; p--) {
     days += `<div class="calendar__number calendar__prevday" value="${
-      prevISOMonth + (prevlastDate - p + 1)
+      prevlastDate - p + 1 + prevISOMonth
     }"><span class="day_circle">${prevlastDate - p + 1}</span></div>`;
     $(".calendar__daynumber").html(days);
   }
@@ -69,21 +79,21 @@ const renderCalendar = () => {
       i === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      days += `<div class="calendar__number calendar__number--current" value="${
-        addZero(i) + i
-      }"><span class="day_circle">${i}</span></div>`;
+      days += `<div class="calendar__number calendar__number--current current_month" value="${addZero(
+        i
+      )}"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
     } else {
-      days += `<div class="calendar__number" value="${
-        addZero(i) + i
-      }"><span class="day_circle">${i}</span></div>`;
+      days += `<div class="calendar__number current_month" value="${addZero(
+        i
+      )}"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
     }
   }
   //get next month of days
   for (let n = 1; n <= nextDate; n++) {
     days += `<div class="calendar__number calendar__nextday" value="${
-      nextISOMonth + "0" + n
+      "0" + n + nextISOMonth
     }"><span class="day_circle">${n}</span></div>`;
     $(".calendar__daynumber").html(days);
   }
