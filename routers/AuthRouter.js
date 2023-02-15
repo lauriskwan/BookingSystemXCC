@@ -23,16 +23,6 @@ class AuthRouter {
         failureRedirect: "/login",
       })
     );
-    // **Flash Test**//
-    // router.post(
-    //   "/login",
-    //   this.passport.authenticate("local-login", {
-    //     successRedirect: "/mycourse",
-    //     failureRedirect: "/login",
-    //   }), () => {
-    //     var
-    //   }
-    // );
 
     router.post(
       "/instructor/login",

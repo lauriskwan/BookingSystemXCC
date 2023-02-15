@@ -74,13 +74,6 @@ app.use(
   ).router()
 );
 
-// **Flash Test**//
-// app.use(function (req, res, next) {
-//   res.locals.success = req.flash('success').toString();
-//   res.locals.error = req.flash("error").toString();
-//   next();
-// })
-
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
 });
