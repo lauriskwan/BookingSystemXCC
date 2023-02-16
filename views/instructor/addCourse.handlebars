@@ -6,7 +6,7 @@
             <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
                 <div class="card-body p-4 p-md-5">
                     <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Add Course</h3>
-                    <form action="/instructor/add_course" method="post" id="addCourse">
+                    <form action="/instructor/add_course" method="post" id="addCourse" enctype="multipart/form-data"> <!-- enctype="multipart/form-data needed when submitting file together in one form -->
                         <div class="row">
                             <div class="col-lg-6 col-sm-12">
                                 <div class="row">
@@ -22,12 +22,26 @@
                                 <div class="row">
                                     <div class="col mb-4 pb-2">
                                         <div class="form-outline">
-                                            <label for="room" class="form-label">Room</label>
-                                            <select class="form-select form-select-lg" id="room" name="room" required>
-                                                <option selected value="Room 1">Room 1</option>
-                                                <option value="Room 2">Room 2</option>
-                                                <option value="Room 3">Room 3</option>
-                                                <option value="Room 4">Room 4</option>
+                                            <label for="sport_id" class="form-label">Sport Type</label>
+                                            <select class="form-select form-select-lg" id="sport_id" name="sport_id" required>
+                                                <option selected value="1">Muay Thai</option>
+                                                <option value="2">Fitness</option>
+                                                <option value="3">Ground Yoga</option>
+                                                <option value="4">Aerial Yoga</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label for="room_id" class="form-label">Room</label>
+                                            <select class="form-select form-select-lg" id="room_id" name="room_id" required>
+                                                <option selected value="1">Room 1</option>
+                                                <option value="2">Room 2</option>
+                                                <option value="3">Room 3</option>
+                                                <option value="4">Room 4</option>
                                             </select>
                                         </div>
                                     </div>
@@ -66,18 +80,18 @@
                                 <div class="row">
                                     <div class="col mb-4 pb-2">
                                         <div class="form-outline">
-                                            <label for="time_slot" class="form-label">Time Slot</label>
-                                            <select class="form-select form-select-lg" id="time_slot" name="time_slot" required>
-                                                <option selected value="09:00 - 10:00">09:00 - 10:00</option>
-                                                <option value="10:15 - 11:15">10:15 - 11:15</option>
-                                                <option value="11:30 - 12:30">11:30 - 12:30</option>
-                                                <option value="14:00 - 15:00">14:00 - 15:00</option>
-                                                <option value="15:15 - 16:15">15:15 - 16:15</option>
-                                                <option value="16:30 - 17:30">16:30 - 17:30</option>
-                                                <option value="17:45 - 18:45">17:45 - 18:45</option>
-                                                <option value="19:00 - 20:00">19:00 - 20:00</option>
-                                                <option value="20:15 - 21:15">20:15 - 21:15</option>
-                                                <option value="21:30 - 22:30">21:30 - 22:30</option>
+                                            <label for="time_slot_id" class="form-label">Time Slot</label>
+                                            <select class="form-select form-select-lg" id="time_slot_id" name="time_slot_id" required>
+                                                <option selected value="1">09:00 - 10:00</option>
+                                                <option value="2">10:15 - 11:15</option>
+                                                <option value="3">11:30 - 12:30</option>
+                                                <option value="4">14:00 - 15:00</option>
+                                                <option value="5">15:15 - 16:15</option>
+                                                <option value="6">16:30 - 17:30</option>
+                                                <option value="7">17:45 - 18:45</option>
+                                                <option value="8">19:00 - 20:00</option>
+                                                <option value="9">20:15 - 21:15</option>
+                                                <option value="10">21:30 - 22:30</option>
                                             </select>
                                         </div>
                                     </div>
@@ -95,7 +109,7 @@
                                                     class="upload-options d-flex align-items-center justify-content-center">
                                                     <p id="uploadImg">Upload Image</p>
                                                     <label>
-                                                        <input type="file" class="image-upload" accept="image/*"
+                                                        <input type="file" name="upload" class="image-upload" accept="image/*"
                                                             id="addCourseImg" />
                                                     </label>
                                                 </div>

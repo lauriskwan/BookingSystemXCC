@@ -4,6 +4,7 @@ const app = express();
 const { engine } = require("express-handlebars");
 const fs = require("fs");
 const fileUpload = require("express-fileupload");
+const path = require("path")
 const knexFile = require("./knexfile").development;
 const knex = require("knex")(knexFile);
 const session = require("express-session");
@@ -22,6 +23,9 @@ const UserProfileService = require("./Service/User/UserProfileService");
 const userProfileService = new UserProfileService(knex);
 const InstructorProfileService = require("./Service/Instructor/InstructorProfileService");
 const instructorProfileService = new InstructorProfileService(knex);
+const InstructorAddCourseService = require("./Service/Instructor/InstructorAddCourseService");
+const instructorAddCourseService = new InstructorAddCourseService(knex);
+
 
 const setupPassport = require("./setupPassport");
 
@@ -39,17 +43,15 @@ app.use(
   })
 );
 
-// Set up file upload
-app.use(fileUpload());
-
-// // Set up flash
-// app.use(flash());
-
 // Set up passport
 setupPassport(app, knex, passport);
 
 // Set up root directory
 app.use(express.static(__dirname + "/public"));
+
+// Set up file upload
+app.use(fileUpload());
+const uploadDirectory = __dirname + path.sep + "public" + path.sep + "assets" + path.sep + "uploadedImages";
 
 // Set up handlebars
 app.engine("handlebars", engine());
@@ -73,8 +75,11 @@ app.use(
   "/",
   new ServiceRouter(
     express,
+    fs,
+    uploadDirectory,
     userProfileService,
-    instructorProfileService
+    instructorProfileService,
+    instructorAddCourseService
   ).router()
 );
 

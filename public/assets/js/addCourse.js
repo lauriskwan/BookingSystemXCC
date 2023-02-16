@@ -92,3 +92,5 @@ function initDropEffect(box) {
     e.stopPropagation();
   }
 }
+
+$("#date").change(() => console.log($("#date").val()));
