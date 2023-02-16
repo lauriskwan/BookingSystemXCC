@@ -14,10 +14,10 @@ exports.up = function (knex) {
     table.foreign("sport_id").references("sports.id");
     table.integer("room_id").notNullable();
     table.foreign("room_id").references("rooms.id");
-    table.date("date").notNullable();
+    table.string("date").notNullable();
     table.integer("time_slot_id").notNullable();
     table.foreign("time_slot_id").references("time_slot.id");
-    table.binary("image");
+    table.string("image_path");
   });
 };
 

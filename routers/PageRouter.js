@@ -15,6 +15,7 @@ class PageRouter {
     router.get("/login", this.userLogin.bind(this));
     router.get("/mycourse", this.userIsLoggedIn, this.userCourse.bind(this));
     router.get("/course", this.courseList.bind(this));
+    router.get("/calendar", this.courseDisplay.bind(this));
     router.get("/course/detail", this.courseDetail.bind(this));
     router.get("/profile", this.userProfile.bind(this));
 
@@ -58,6 +59,10 @@ class PageRouter {
   courseList(req, res) {
     console.log("Directing to course list page.");
     res.render("user/courseList");
+  }
+
+  courseDisplay (req, res) {
+    console.log(req.query.date);
   }
 
   courseDetail(req, res) {

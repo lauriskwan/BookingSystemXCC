@@ -7,16 +7,16 @@ exports.seed = async function (knex) {
   await knex("sports").del();
   await knex("sports").insert([
     {
-      sport_name: "MuayThai",
+      sport_name: "Muay Thai",
     },
     {
       sport_name: "Fitness",
     },
     {
-      sport_name: "GroundYoga",
+      sport_name: "Ground Yoga",
     },
     {
-      sport_name: "AerialYoga",
+      sport_name: "Aerial Yoga",
     },
   ]);
 };
