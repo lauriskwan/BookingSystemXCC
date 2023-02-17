@@ -1,46 +1,25 @@
 // Handling user action
 $(".calendar__daynumber").on("click", (e) => {
-  //e.preventDefault();
-  //console.log("day pressed");
   let getdate = $("#get_date").val();
   let reformattedDate = getdate.split("-").reverse().join("-");
-  console.log(reformattedDate);
-  //$("#get_date_form").submit();
-  //let daynumber = $(".calendar__number");
-  //$(`div[value=${getdate}]`).css({ color: "red" });
-  // fetch(`/calendar?date=${reformattedDate}`, {method: 'GET'}).then(response => console.log(response));
-  const arr = [
-    {
-      course_name: "Test",
+  // console.log(reformattedDate);
 
-      quota: 10,
-      instructor_id: 1,
-      sport_id: 1,
-      room_id: 1,
-      date: "2023-02-28",
-      time_slot_id: 1,
-    },
-    {
-      course_name: "Test2",
-
-      quota: 15,
-      instructor_id: 2,
-      sport_id: 2,
-      room_id: 1,
-      date: "2023-02-28",
-      time_slot_id: 2,
-    },
-  ];
-
-  arr.forEach((course) => {
-    $(".resClass").append(
-      `<h1>${course.course_name}</h1><br>
-      <p>${course.instructor_id}</p><br>
-      <p>${course.quota}</p><br>
-      <p>${course.sport_id}</p><br>
-      <p>${course.room_id}</p><br>
-      <p>${course.date}</p><br>
-      <p>${course.time_slot_id}</p><br>`
-    );
+  axios.get(`/calendar?date=${reformattedDate}`).then((res) => {
+    $(".courseList").html("");
+    if (res.data.length === 0) {
+      $(".courseList").append(`<h6>No course today.</h6>`);
+    }
+    res.data.forEach((course) => {
+      $(".courseList").append(
+        `<div class="courseListItem">
+      <div class="col-3">
+      <h6>${course.time_slot}</h6>
+      </div>
+            <div class=" courseName"><h6>${course.course_name} (${course.sport_name})</h6></div>
+            <div class=" courseInstructor"><p>${course.name}</p></div>
+            <div class=" courseQuota"><p>${course.quota}</p></div>
+      </div>`
+      );
+    });
   });
 });

@@ -1,33 +1,12 @@
 /* for user course page, calendar */
-body {
-  /* position: relative; */
-  /* display: flex; */
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
-  font-family: "Poppins", sans-serif;
-
-  /* &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background: inherit;
-        filter: blur(10px);
-    } */
-}
-
 .calendar {
   position: relative;
   background-color: transparent;
-  /* width: 300px; */
+  margin-top: 20px;
   min-height: 50vh;
-  /* background-color: #2a83323e; */
   box-sizing: border-box;
   box-shadow: 0px 5px 20px -5px rgba(101, 95, 95, 1);
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -45,25 +24,7 @@ body {
     no-repeat center / cover;
   text-shadow: 0 2px 2px rgba(#000, 0.2);
   box-sizing: border-box;
-  /* box-shadow: 10px 10px 20px -5px rgba(101, 95, 95, 1); */
-
-  /* &::before {
-        content: "";
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        position: absolute;
-        background: linear-gradient(to top, rgba(#000, 0.25), rgba(#000, 0.1));
-    } */
 }
-/* .calendar__picture h2{
-    margin: 0;
-}
-.calendar__picture h3 {
-    margin: 0;
-    font-weight: 500;
-} */
 
 .calendar__date {
   padding: 10px;
@@ -151,7 +112,7 @@ body {
 
 .calendar__nextday .day_circle,
 .calendar__prevday .day_circle {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 /* .day_selected{
@@ -161,3 +122,36 @@ body {
     font-weight: 500;
     cursor: pointer;
 } */
+
+.courseList {
+  margin-top: 50px;
+}
+
+.courseListItem {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #666;
+  min-height: 50px;
+  padding-top: 5px;
+}
+
+.courseListItem h5,
+.courseListItem h6,
+.courseListItem p {
+  margin-right: 10px;
+  color: #666;
+}
+
+.courseListItem .courseName {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.courseListItem h6,
+.courseListItem p {
+  font-weight: 300;
+}
+
+.courseListItem:nth-child(even) {
+  background-color: rgba(255, 200, 100, 1);
+}

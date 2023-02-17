@@ -3,27 +3,35 @@ class ServiceRouter {
     express,
     fs,
     uploadDirectory,
-    userProfileService,
-    instructorProfileService,
+    courseService,
+    profileService,
     instructorAddCourseService
   ) {
     this.express = express;
     this.fs = fs;
     this.uploadDirectory = uploadDirectory;
-    this.userProfileService = userProfileService;
-    this.instructorProfileService = instructorProfileService;
+    this.courseService = courseService;
+    this.profileService = profileService;
     this.instructorAddCourseService = instructorAddCourseService;
   }
 
   router() {
     let router = this.express.Router();
 
+    //Calendar
+    router.get("/calendar", (req, res) => {
+      // res.send(req.query.date);
+      return this.courseService
+      .getCourse(req.query.date)
+      .then(data => res.send(data))
+    });
+
     // Edit user profile
     router.post("/profile", (req, res) => {
-      return this.userProfileService
+      return this.profileService
         .updateUser(req.user.id, req.body.email, req.body.phone_number)
         .then(() => {
-          this.userProfileService.display(req.user.id);
+          this.profileService.displayUser(req.user.id);
         })
         .then((err) => {
           if (err) {
@@ -35,10 +43,10 @@ class ServiceRouter {
 
     // Edit instructor profile
     router.post("/instructor/profile", (req, res) => {
-      return this.instructorProfileService
+      return this.profileService
         .updateInstructor(req.user.id, req.body.email, req.body.phone_number)
         .then(() => {
-          this.instructorProfileService.display(req.user.id);
+          this.profileService.displayInstructor(req.user.id);
         })
         .then(res.status(200));
     });

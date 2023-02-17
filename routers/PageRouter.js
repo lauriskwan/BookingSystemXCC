@@ -1,8 +1,7 @@
 class PageRouter {
-  constructor(express, userProfileService, instructorProfileService) {
+  constructor(express, profileService) {
     this.express = express;
-    this.userProfileService = userProfileService;
-    this.instructorProfileService = instructorProfileService;
+    this.profileService = profileService;
   }
 
   router() {
@@ -15,7 +14,6 @@ class PageRouter {
     router.get("/login", this.userLogin.bind(this));
     router.get("/mycourse", this.userIsLoggedIn, this.userCourse.bind(this));
     router.get("/course", this.courseList.bind(this));
-    router.get("/calendar", this.courseDisplay.bind(this));
     router.get("/course/detail", this.courseDetail.bind(this));
     router.get("/profile", this.userProfile.bind(this));
 
@@ -61,10 +59,6 @@ class PageRouter {
     res.render("user/courseList");
   }
 
-  courseDisplay (req, res) {
-    console.log(req.query.date);
-  }
-
   courseDetail(req, res) {
     console.log("Directing to course detail page.");
     res.render("user/courseDetail");
@@ -72,8 +66,8 @@ class PageRouter {
 
   userProfile(req, res) {
     console.log("Directing to user's profile page.");
-    this.userProfileService
-      .display(req.user.id)
+    this.profileService
+      .displayUser(req.user.id)
       .then((data) => {
         res.render("user/userProfile", {
           name: data[0]["name"],
@@ -84,7 +78,6 @@ class PageRouter {
           expiry: data[0]["expiry"],
         });
       })
-      .then(console.log("userProfile@PageRouter"));
   }
 
   // instructor
@@ -111,7 +104,7 @@ class PageRouter {
 
   instructorProfile(req, res) {
     console.log("Directing to instructor's profile page.");
-    this.instructorProfileService.display(req.user.id).then((data) => {
+    this.profileService.displayInstructor(req.user.id).then((data) => {
       var sportsArr = [];
       data.forEach((element) => {
         if (sportsArr.length == 0) {
