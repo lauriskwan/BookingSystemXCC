@@ -42,7 +42,8 @@ const renderCalendar = () => {
 
   const nextDate = 7 - lastweekday - 1;
 
-  var ISOdate = date.toISOString().slice(0, 8).split("-").reverse().join("-");
+  // let ISOdate = date.toISOString().slice(0, 8).split("-").reverse().join("-");    // Does not work. be careful with time difference.
+  let ISOdate = date.toLocaleDateString().slice(2, 10).split("/").join("-");
   const addZero = (x) => {
     if (x < 10) {
       return "0" + x + ISOdate;
@@ -50,7 +51,7 @@ const renderCalendar = () => {
       return x + ISOdate;
     }
   };
-  const prevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
+  const prevMonth = new Date(date.getFullYear(), date.getMonth(), -1);
   const prevISOMonth = prevMonth
     .toISOString()
     .slice(0, 8)
@@ -80,7 +81,7 @@ const renderCalendar = () => {
       date.getMonth() === new Date().getMonth()
     ) {
       days += `<div class="calendar__number calendar__number--current current_month" value="${addZero(
-        i
+        i 
       )}"><span class="day_circle">${i}</span></div>`;
       $(".calendar__daynumber").html(days);
     } else {
@@ -100,7 +101,6 @@ const renderCalendar = () => {
   var cnd_childs = document.querySelectorAll(".calendar__number");
   cnd_childs.forEach((el) =>
     el.addEventListener("click", (e) => {
-      //console.log(el.getAttribute("value"));
       $("#get_date").val(el.getAttribute("value"));
     })
   );

@@ -17,7 +17,7 @@ class CourseService {
         "courses.quota"
       )
       .where({ date: date })
-      .orderBy("time_slot.time_slot", "asc");
+      .orderBy("time_slot.time_slot", "asc")
   }
 }
 

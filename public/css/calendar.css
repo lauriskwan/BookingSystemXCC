@@ -96,6 +96,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .current_month .day_circle:hover:not(.calendar__number--current span) {
   background-color: rgb(241, 90, 34);
   border-radius: 100%;
@@ -125,20 +126,22 @@
 
 .courseList {
   margin-top: 50px;
+  width: 100%;
 }
 
 .courseListItem {
+  padding: 0 20px;
   position: relative;
-  display: flex;
   border-bottom: 1px solid #666;
-  min-height: 50px;
   padding-top: 5px;
 }
 
 .courseListItem h5,
-.courseListItem h6,
+.courseListItem h6 {
+  color: #262626;
+}
+
 .courseListItem p {
-  margin-right: 10px;
   color: #666;
 }
 
@@ -147,11 +150,46 @@
   text-transform: uppercase;
 }
 
-.courseListItem h6,
-.courseListItem p {
+.courseListItem .courseTime h6 {
   font-weight: 300;
 }
 
+.courseDataLeft,
+.courseDataRight {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .courseListItem:nth-child(even) {
-  background-color: rgba(255, 200, 100, 1);
+  background-color: rgba(255, 200, 100, 0.5);
+}
+
+.courseButtons {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.courseList .courseDetail:hover {
+  color: rgba(241, 90, 34, 1);
+  cursor: pointer;
+}
+
+.courseList .bookingBtn {
+  margin-left: 20px;
+  color: white;
+  background-color: rgba(241, 90, 34, 1);
+  border-radius: 50px;
+}
+
+.courseList .bookingBtn:hover {
+  color: rgba(241, 90, 34, 1);
+  background-color: #fff;
+  border: 1px solid rgba(241, 90, 34, 1);
 }

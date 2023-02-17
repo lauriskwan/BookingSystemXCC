@@ -142,7 +142,7 @@ h5,
 h6 {
   margin-top: 0px;
   margin-bottom: 0px;
-  color: #fff;
+  color: #666;
   font-weight: 700;
 }
 
@@ -173,10 +173,16 @@ body {
 }
 
 body .page-content {
+  min-height: 750px;
   margin-top: 45px;
   background-color: rgba(255, 213, 128, 1);
   padding: 60px;
   border-radius: 10px;
+  background-image: url("../images/fitness.png");
+  background-repeat: no-repeat;
+  background-size: 95%;
+  background-position: bottom;
+  background-attachment: fixed;
 }
 
 p {
