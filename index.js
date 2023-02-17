@@ -19,10 +19,10 @@ const AuthRouter = require("./routers/AuthRouter");
 const ServiceRouter = require("./routers/ServiceRouter");
 
 // Services
-const UserProfileService = require("./Service/User/UserProfileService");
-const userProfileService = new UserProfileService(knex);
-const InstructorProfileService = require("./Service/Instructor/InstructorProfileService");
-const instructorProfileService = new InstructorProfileService(knex);
+const CourseService = require("./Service/CourseService");
+const courseService = new CourseService(knex);
+const ProfileService = require("./Service/ProfileService");
+const profileService = new ProfileService(knex);
 const InstructorAddCourseService = require("./Service/Instructor/InstructorAddCourseService");
 const instructorAddCourseService = new InstructorAddCourseService(knex);
 
@@ -64,7 +64,7 @@ app.use(express.json());
 // Page router
 app.use(
   "/",
-  new PageRouter(express, userProfileService, instructorProfileService).router()
+  new PageRouter(express, profileService).router()
 );
 
 // Auth router
@@ -77,8 +77,8 @@ app.use(
     express,
     fs,
     uploadDirectory,
-    userProfileService,
-    instructorProfileService,
+    courseService,
+    profileService,
     instructorAddCourseService
   ).router()
 );
