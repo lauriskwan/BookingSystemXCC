@@ -15,10 +15,12 @@ $(".calendar__daynumber").on("click", (e) => {
     }
     res.data.forEach((course) => {
       $(".courseList").append(
-        `<div class="container courseListItem">
+        `
+        <div class="container courseListItem">
         <div class="courseButtons">
-        <p class="courseDetail">View Detail</p>
-        <input class="btn bookingBtn" type="submit" value="Book" />
+        <input type="hidden" class="courseID" value="${course.id}">
+        <a href="/course/detail?${course.id}"><p class="courseDetail">View Detail</p></a>
+        <input class="btn bookingBtn" type="button" value="Book" data-bs-toggle="modal" data-bs-target="#bookingConfirmation"/>
         </div>
       <div class="row">
       <div class="courseDataLeft col-lg-3 col-sm-12">
@@ -33,8 +35,44 @@ $(".calendar__daynumber").on("click", (e) => {
         </div>
         <div class="courseQuota"><p>Quota: ${course.quota}</p></div>
       </div>
-      </div>`
+      </div>
+      `
       );
     });
   });
 });
+
+// $(document).on("click", ".bookingBtn", function (e) {
+//   // do stuff
+//   console.log($(this).parents("div").find(".courseListItem"));
+// });
+
+$(document).on("click", ".bookingBtn", function (e) {
+  // $(".modal-body").html(`<h1>${$(this).parent().children(".courseID").val()}</h1>`);
+  $(".modal-body").html(
+    `<div class="d-flex flex-column">
+       <p>Course name: ${$(this)
+         .parents(".courseListItem")
+         .find(".courseName > h6")
+         .html()}
+        </p>
+        <p>Date: ${$("#get_date").val()}</p>
+        <p>Time: ${$(this)
+          .parents(".courseListItem")
+          .find(".courseTime > h6")
+          .html()}
+        </p>
+        <p>Instructor: ${$(this).parents(".courseListItem").find(".courseInstructor > p").html()}</p>
+     </div>`
+  );
+});
+
+// Handle modal
+$(function () {
+  $("#closeModal").click(function () {
+    $("#bookingConfirmation").modal("hide");
+  });
+});
+
+// get course ID
+// $(".modal-body").html($(this).parent().children(".courseID").val());
