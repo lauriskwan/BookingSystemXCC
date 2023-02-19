@@ -18,12 +18,38 @@ class ServiceRouter {
   router() {
     let router = this.express.Router();
 
-    //Calendar
+    // Calendar
     router.get("/calendar", (req, res) => {
       // res.send(req.query.date);
       return this.courseService
-      .getCourse(req.query.date)
-      .then(data => res.send(data))
+        .getCourse(req.query.date)
+        .then((data) => res.send(data));
+    });
+
+    // Booking
+    router.post("/course/book/:courseID", (req, res) => {
+      //see if it is member first
+
+      // console.log(req.params.courseID, req.user.id);
+      // res.send(req.params.courseID);
+      return this.profileService.displayUser(req.user.id).then((data) => {
+        if (data[0]["is_member"] === false) {
+          res.send("membership expired");
+        } else {
+          return this.courseService
+            .checkBooked(req.user.id, req.params.courseID)
+            .then((data) => {
+              if (data.length > 0) {
+                res.send("already booked");
+              } else {
+                return this.courseService.book(
+                  req.user.id,
+                  req.params.courseID
+                ).then(res.send("success"));
+              }
+            });
+        }
+      });
     });
 
     // Edit user profile

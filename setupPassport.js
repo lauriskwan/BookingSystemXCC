@@ -5,24 +5,37 @@ module.exports = (app, knex, passport) => {
   app.use(passport.session());
 
   // Serialize
-  passport.serializeUser((user, done) => {
+  passport.serializeUser((entity, done) => {
     // Send the user id to the session, stored in browser
-    done(null, user.id);
+    done(null, {
+      id: entity.user.id,
+      type: entity.type,
+      password: entity.user.password,
+    });
   });
 
   // Deserialize
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser(async (obj, done) => {
     // Take in the id from the session and use the id to verify the user
-    const user = await knex("user_login").where({ id }).first();
-    const instructor = await knex("instructor_login").where({ id }).first();
-    // return user ? done(null, user) : done(null, false);
-    // return (user || instructor) ? will not work as if instructor returns true, session cannot deserialize done(null, >> user <<)
-    return user
-      ? done(null, user)
-      : instructor
-      ? done(null, instructor)
-      : done(null, false);
+    switch (obj.type) {
+      case "user":
+        var id = obj.id;
+        const user = await knex("user_login").where({ id }).first();
+        user.permission = "user_permission";
+        return user && user.password == obj.password
+          ? done(null, user)
+          : done(null, false);
+
+      case "instructor":
+        var id = obj.id;
+        const instructor = await knex("instructor_login").where({ id }).first();
+        instructor.permission = "instructor_permission";
+        return instructor && instructor.password == obj.password
+          ? done(null, instructor)
+          : done(null, false);
+    }
   });
 
   require("./strategy/local-strategy")(passport, knex);
 };
+

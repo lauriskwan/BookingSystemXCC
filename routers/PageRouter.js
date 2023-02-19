@@ -8,24 +8,44 @@ class PageRouter {
     let router = this.express.Router();
 
     // Get
-    router.get("/", this.homepage.bind(this));
-    router.get("/signup", this.registration.bind(this));
+    router.get("/", this.logOut, this.homepage.bind(this));
+    router.get("/signup", this.userNotLoggedIn, this.registration.bind(this));
 
     router.get("/login", this.userLogin.bind(this));
     router.get("/mycourse", this.userIsLoggedIn, this.userCourse.bind(this));
-    router.get("/course", this.courseList.bind(this));
-    router.get("/course/detail", this.courseDetail.bind(this));
-    router.get("/profile", this.userProfile.bind(this));
+    router.get("/course", this.userIsLoggedIn, this.courseList.bind(this));
+    router.get(
+      "/course/detail",
+      this.userIsLoggedIn,
+      this.courseDetail.bind(this)
+    );
+    router.get("/profile", this.userIsLoggedIn, this.userProfile.bind(this));
 
-    router.get("/instructor/login", this.instructorLogin.bind(this));
-    router.get("/instructor/course", this.instructorCourseList.bind(this));
+    router.get(
+      "/instructor/login",
+      this.instructorNotLoggedIn,
+      this.instructorLogin.bind(this)
+    );
+    router.get(
+      "/instructor/course",
+      this.instructorIsLoggedIn,
+      this.instructorCourseList.bind(this)
+    );
     router.get(
       "/instructor/manage_course",
       this.instructorIsLoggedIn,
       this.instructorManageCourse.bind(this)
     );
-    router.get("/instructor/add_course", this.instructorAddCourse.bind(this));
-    router.get("/instructor/profile", this.instructorProfile.bind(this));
+    router.get(
+      "/instructor/add_course",
+      this.instructorIsLoggedIn,
+      this.instructorAddCourse.bind(this)
+    );
+    router.get(
+      "/instructor/profile",
+      this.instructorIsLoggedIn,
+      this.instructorProfile.bind(this)
+    );
 
     return router;
   }
@@ -66,18 +86,16 @@ class PageRouter {
 
   userProfile(req, res) {
     console.log("Directing to user's profile page.");
-    this.profileService
-      .displayUser(req.user.id)
-      .then((data) => {
-        res.render("user/userProfile", {
-          name: data[0]["name"],
-          email: data[0]["email"],
-          phone_number: data[0]["phone_number"],
-          joined_at: data[0]["joined_at"],
-          is_member: data[0]["is_member"],
-          expiry: data[0]["expiry"],
-        });
-      })
+    this.profileService.displayUser(req.user.id).then((data) => {
+      res.render("user/userProfile", {
+        name: data[0]["name"],
+        email: data[0]["email"],
+        phone_number: data[0]["phone_number"],
+        joined_at: data[0]["joined_at"],
+        is_member: data[0]["is_member"],
+        expiry: data[0]["expiry"],
+      });
+    });
   }
 
   // instructor
@@ -127,8 +145,13 @@ class PageRouter {
   // authentication
 
   userIsLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    res.redirect("/login");
+    if (req.isAuthenticated()) {
+      if (req.user.permission === "user_permission") {
+        return next();
+      } else {
+        res.send("Access denied.");
+      }
+    } else res.redirect("/login");
   }
 
   userNotLoggedIn(req, res, next) {
@@ -137,13 +160,30 @@ class PageRouter {
   }
 
   instructorIsLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    res.redirect("/instructor/login");
+    if (req.isAuthenticated()) {
+      if (req.user.permission === "instructor_permission") {
+        return next();
+      } else {
+        res.send("Access denied.");
+      }
+    } else res.redirect("/instructor/login");
   }
 
   instructorNotLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) return next();
     res.redirect("/instructor/manage_course");
+  }
+
+  logOut(req, res, next) {
+    if (req.isAuthenticated()) {
+      return req.logout(function (err) {
+        if (err) {
+          return err;
+        }
+        next();
+      });
+    }
+    next();
   }
 }
 

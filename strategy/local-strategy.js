@@ -72,8 +72,9 @@ module.exports = (passport, knex) => {
         }
         // hashing the entered password and comparing with the hash password from the database
         const result = await bcrypt.compare(password, user.password);
+        const type = "user";
         return result
-          ? done(null, user)
+          ? done(null, {user, type})
           : done(null, false, { message: "Incorrect username or password." });
       }
     )
@@ -97,8 +98,9 @@ module.exports = (passport, knex) => {
 
         // bcrypt.compare will not work for instructor as password hashing in excluded from instructor registration process.
         const result = password === user.password;
+        const type = "instructor";
         return result
-          ? done(null, user)
+          ? done(null, {user, type})
           : done(null, false, { message: "Incorrect username or password." });
       }
     )
