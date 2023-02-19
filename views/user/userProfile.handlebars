@@ -25,7 +25,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-md-6 mb-4 pb-2">
                                 <div class="form-outline">
@@ -34,14 +33,16 @@
                                         class="form-control form-control-lg" value={{phone_number}} />
                                 </div>
                             </div>
-
+                        </div>
                         <div class="row">
                             <div class="col-md-3 mb-4 pt-2">
                                 <input class="btn btnProfile btn-lg" type="submit" value="Submit" />
                             </div>
                         </div>
                     </form>
-                    
+                    <div class="row" style="height: 50px;">
+                        {{>message}}
+                    </div>
                     <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 mt-5">Membership Information</h3>
                     <div class="row">
                        <label class="form-control form-control-lg memberInfo">Joined at: {{joined_at}}</label>
