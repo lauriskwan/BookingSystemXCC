@@ -15,6 +15,7 @@ const months = [
 ];
 let today = date.toISOString().slice(0, 10).split("-").reverse().join("-");
 $("#get_date").val(today);
+$("#show_date").html(today);
 
 const renderCalendar = () => {
   // const date = new Date();
@@ -102,6 +103,7 @@ const renderCalendar = () => {
     el.addEventListener("click", (e) => {
       //console.log(el.getAttribute("value"));
       $("#get_date").val(el.getAttribute("value"));
+      $("#show_date").html(el.getAttribute("value"));
     })
   );
 };
