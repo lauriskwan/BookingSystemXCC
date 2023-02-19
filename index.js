@@ -64,7 +64,7 @@ app.use(express.json());
 // Page router
 app.use(
   "/",
-  new PageRouter(express, profileService).router()
+  new PageRouter(express, courseService, profileService).router()
 );
 
 // Auth router

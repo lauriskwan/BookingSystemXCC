@@ -2,6 +2,7 @@
 $(".calendar__daynumber").on("click", (e) => {
   let getdate = $("#get_date").val();
   let reformattedDate = getdate.split("-").reverse().join("-");
+  $("#dateTitle").html(getdate);
   // console.log(reformattedDate);
 
   axios.get(`/calendar?date=${reformattedDate}`).then((res) => {

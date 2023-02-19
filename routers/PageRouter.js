@@ -1,6 +1,7 @@
 class PageRouter {
-  constructor(express, profileService) {
+  constructor(express, courseService, profileService) {
     this.express = express;
+    this.courseService = courseService;
     this.profileService = profileService;
   }
 
@@ -53,39 +54,38 @@ class PageRouter {
   // general
 
   homepage(req, res) {
-    console.log("Directing to homepage.");
     res.render("homepage", { layout: "loginpage" });
   }
 
   registration(req, res) {
-    console.log("Directing to registration page.");
     res.render("userReg", { layout: false });
   }
 
   // user
 
   userLogin(req, res) {
-    console.log("Directing to user login page.");
     res.render("user/userLogin", { layout: "loginpage" });
   }
 
   userCourse(req, res) {
-    console.log("Directing to user's course page.");
-    res.render("user/myCourse");
+    this.courseService.userMyCourse(req.user.id).then((data) => {
+      console.log(data);
+          res.render("user/myCourse", {
+            user: req.user.username,
+            myCourse: data
+          });
+    })
   }
 
   courseList(req, res) {
-    console.log("Directing to course list page.");
     res.render("user/courseList");
   }
 
   courseDetail(req, res) {
-    console.log("Directing to course detail page.");
     res.render("user/courseDetail");
   }
 
   userProfile(req, res) {
-    console.log("Directing to user's profile page.");
     this.profileService.displayUser(req.user.id).then((data) => {
       res.render("user/userProfile", {
         name: data[0]["name"],
@@ -101,27 +101,22 @@ class PageRouter {
   // instructor
 
   instructorLogin(req, res) {
-    console.log("Directing to instructor login page.");
     res.render("instructor/instructorLogin", { layout: "loginpage" });
   }
 
   instructorCourseList(req, res) {
-    console.log("Directing to instructor course list page.");
     res.render("instructor/courseList", { layout: "main_instructor" });
   }
 
   instructorManageCourse(req, res) {
-    console.log("Directing to instructor manage course page.");
     res.render("instructor/manageCourse", { layout: "main_instructor" });
   }
 
   instructorAddCourse(req, res) {
-    console.log("Directing to instructor add course page.");
     res.render("instructor/addCourse", { layout: "main_instructor" });
   }
 
   instructorProfile(req, res) {
-    console.log("Directing to instructor's profile page.");
     this.profileService.displayInstructor(req.user.id).then((data) => {
       var sportsArr = [];
       data.forEach((element) => {
