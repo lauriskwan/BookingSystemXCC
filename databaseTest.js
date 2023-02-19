@@ -36,24 +36,28 @@ const knex = require("knex")(knexFile);
 //     console.log(sportsArr);
 //   });
 
-knex("courses")
-  .join("rooms", "courses.room_id", "rooms.id")
-  .join("time_slot", "courses.time_slot_id", "time_slot.id")
-  .join("sports", "courses.sport_id", "sports.id")
-  .select("courses.date", "time_slot.time_slot", "rooms.room_name")
-  .where({
-    date: "2012-01-31",
-    time_slot: "09:00 - 10:00",
-    room_name: "4",
-  })
-  .then((data) => console.log(data[0])); // undefined
+// knex("courses")
+//   .join("rooms", "courses.room_id", "rooms.id")
+//   .join("time_slot", "courses.time_slot_id", "time_slot.id")
+//   .join("sports", "courses.sport_id", "sports.id")
+//   .select("courses.date", "time_slot.time_slot", "rooms.room_name")
+//   .where({
+//     date: "2012-01-31",
+//     time_slot: "09:00 - 10:00",
+//     room_name: "4",
+//   })
+//   .then((data) => console.log(data[0])); // undefined
 
-knex("courses").insert({
-  course_name: "Test",
-  quota: "20",
-  instructor_id: "1",
-  sport_id: "1",
-  room_id: "1",
-  date: "2020-01-01",
-  time_slot_id: "1",
-});
+// knex("courses").insert({
+//   course_name: "Test",
+//   quota: "20",
+//   instructor_id: "1",
+//   sport_id: "1",
+//   room_id: "1",
+//   date: "2020-01-01",
+//   time_slot_id: "1",
+// });
+
+const password = 123456;
+
+knex("instructor_login").where({ password }).then(data => console.log(data))

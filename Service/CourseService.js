@@ -17,7 +17,21 @@ class CourseService {
         "courses.quota"
       )
       .where({ date: date })
-      .orderBy("time_slot.time_slot", "asc")
+      .orderBy("time_slot.time_slot", "asc");
+  }
+
+  checkBooked(user_id, course_id) {
+    return this.knex("course_users").select("*").where({
+      course_id: course_id,
+      user_id: user_id,
+    })
+  }
+
+  book(user_id, course_id) {
+    return this.knex("course_users").insert({
+      course_id: course_id,
+      user_id: user_id,
+    });
   }
 }
 

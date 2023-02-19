@@ -19,7 +19,7 @@ $(".calendar__daynumber").on("click", (e) => {
         <div class="container courseListItem">
         <div class="courseButtons">
         <input type="hidden" class="courseID" value="${course.id}">
-        <a href="/course/detail?${course.id}"><p class="courseDetail">View Detail</p></a>
+        <a href="/course/detail/${course.id}"><p class="courseDetail">View Detail</p></a>
         <input class="btn bookingBtn" type="button" value="Book" data-bs-toggle="modal" data-bs-target="#bookingConfirmation"/>
         </div>
       <div class="row">
@@ -50,7 +50,12 @@ $(".calendar__daynumber").on("click", (e) => {
 $(document).on("click", ".bookingBtn", function (e) {
   // $(".modal-body").html(`<h1>${$(this).parent().children(".courseID").val()}</h1>`);
   $(".modal-body").html(
-    `<div class="d-flex flex-column">
+    `
+    <input type="hidden" class="courseID" value="${$(this)
+      .parent()
+      .children(".courseID")
+      .val()}">
+    <div class="d-flex flex-column">
        <p>Course name: ${$(this)
          .parents(".courseListItem")
          .find(".courseName > h6")
@@ -62,12 +67,34 @@ $(document).on("click", ".bookingBtn", function (e) {
           .find(".courseTime > h6")
           .html()}
         </p>
-        <p>Instructor: ${$(this).parents(".courseListItem").find(".courseInstructor > p").html()}</p>
-     </div>`
+        <p>Instructor: ${$(this)
+          .parents(".courseListItem")
+          .find(".courseInstructor > p")
+          .html()}</p>
+     </div>
+     `
   );
+  // $("#confirmBtn").html(`
+  //   <a href="/course/book/${$(this).parent().children(".courseID").val()}">
+  //     <button type="button" class="btn btn-primary">Confirm</button>
+  //   </a>`);
 });
 
 // Handle modal
+$(document).on("click", "#confirmBookingBtn", function (e) {
+  axios.post(
+    `/course/book/${$(this).parents(".modal-content").find(".courseID").val()}`
+  ).then(data => {
+    if (data.data === "membership expired") {
+      alert("Unsuccessful. Your membership has expired.");
+    } else if (data.data === "already booked") {
+      alert("You have already booked the course.");
+    } else {
+      alert("Booked Successfully.");
+    }
+  }).then($("#bookingConfirmation").modal("hide"));
+});
+
 $(function () {
   $("#closeModal").click(function () {
     $("#bookingConfirmation").modal("hide");
