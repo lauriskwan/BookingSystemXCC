@@ -1,38 +1,15 @@
-{{!-- alert message --}}
 {{!-- install fontawesome and jQuery --}}
+    <link rel="stylesheet" href="/css/alertmsg.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/695eef1759.js" crossorigin="anonymous"></script>
+    <script src="./js/alertmsg_js.js"></script>
+{{!-- alert message --}}
 <div class="alert_ok hide">
-    <span class="msg"><i class="fa-solid fa-circle-check fa-xl"></i> Register Successfully</span>
-    {{!-- $(".alert_ok span").html("CHANGE ANY MSG") --}}
+    <span class="msg"><i class="fa-solid fa-circle-check fa-xl"></i> Submitted Successfully</span>
 </div>
 <div class="alert_fail hide">
-    <span class="msg"><i class="fa-solid fa-circle-xmark fa-xl"></i> Register Fail</span>
+    <span class="msg"><i class="fa-solid fa-circle-xmark fa-xl"></i> Submitted Fail</span>
 </div>
-<button class="test_btn1" style="padding:15px; font: size 50px;">success msg</button>
-<button class="test_btn2" style="padding:15px; font: size 50px;">fail msg</button>
-
-<script>
-    $(".test_btn1").on("click", () => {
-        $(".alert_ok").removeClass("hide");
-        $(".alert_ok").addClass("show");
-        setTimeout(function () {
-            $(".alert_ok").addClass("fadeout");
-        }, 2500)
-        setTimeout(function () {
-            $(".alert_ok").addClass("hide");
-            $(".alert_ok").removeClass("show");
-            $(".alert_ok").removeClass("fadeout");
-        }, 2800)
-    });
-    $(".test_btn2").on("click", () => {
-        $(".alert_fail").removeClass("hide");
-        $(".alert_fail").addClass("show");
-        setTimeout(function () {
-            $(".alert_fail").addClass("fadeout");
-        }, 2500)
-        setTimeout(function () {
-            $(".alert_fail").addClass("hide");
-            $(".alert_fail").removeClass("show");
-            $(".alert_fail").removeClass("fadeout");
-        }, 2800)
-    });
-</script>
+{{!-- <button class="test_btn1 hide" style="padding:15px; font: size 50px;">success msg</button>
+<button class="test_btn2 hide" style="padding:15px; font: size 50px;">fail msg</button> --}}

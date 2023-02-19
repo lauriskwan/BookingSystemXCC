@@ -44,6 +44,7 @@ const renderCalendar = () => {
 
   // let ISOdate = date.toISOString().slice(0, 8).split("-").reverse().join("-");    // Does not work. be careful with time difference.
   let ISOdate = date.toLocaleDateString().slice(2, 10).split("/").join("-");
+  // let ISOdate = date.toLocaleDateString().slice(0, 7).split("/").reverse().join("-");//for Window
   const addZero = (x) => {
     if (x < 10) {
       return "0" + x + ISOdate;
