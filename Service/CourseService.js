@@ -155,6 +155,12 @@ class CourseService {
       .del();
   }
 
+  removeUsers(course_id) {
+    return this.knex("course_users")
+    .where({course_id: course_id})
+    .del();
+  }
+
   instructorCourseDetail(course_id) {
     return this.knex("courses")
       .join("instructors", "courses.instructor_id", "instructors.id")

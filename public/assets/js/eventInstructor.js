@@ -75,6 +75,9 @@ $(".calendar__daynumber").on("click", (e) => {
 
 // Open cancel modal
 $(document).on("click", ".cancelBtn", function (e) {
+  $("#confirmCancelBtn").removeClass("confirmedCancel");
+  $("#confirmCancelBtn").addClass("btn-primary");
+  $("#confirmCancelBtn").removeClass("btn-danger");
   $(".cancel-modal-body").html(
     `
     <input type="hidden" class="courseID" value="${$(this)
@@ -82,7 +85,7 @@ $(document).on("click", ".cancelBtn", function (e) {
       .children(".courseID")
       .val()}">
     <div class="px-3 my-5 d-flex flex-column">
-       <p>Are you sure you want to cancel course ${$(this)
+       <p id="cancelMsg">Are you sure you want to cancel course ${$(this)
          .parents(".courseListItem")
          .find("#course_name")
          .html()}?
@@ -104,12 +107,34 @@ $(document).on("click", "#confirmCancelBtn", function (e) {
     .then((data) => {
       if (data.data === "cancelled successfully") {
         alert("Cancelled successfully");
-      } else {
-        alert("Error");
+        document.location.reload();
+      } else if (data.data === "users exist") {
+        $("#cancelMsg").html(
+          "Number of booking of this course > 0. Still cancel?"
+        );
+        $("#confirmCancelBtn").addClass("confirmedCancel");
+        $("#confirmCancelBtn").removeClass("btn-primary");
+        $("#confirmCancelBtn").addClass("btn-danger");
       }
-      document.location.reload();
-    })
-    .then($("#cancelCourse").modal("hide"));
+    });
+});
+
+$(document).on("click", ".confirmedCancel", function (e) {
+  axios
+    .delete(
+      `/course/remove/confirmed/${$(this)
+        .parents(".modal-content")
+        .find(".courseID")
+        .val()}`
+    )
+    .then((data) => {
+      if (data.data === "cancelled successfully") {
+        alert("Cancelled successfully");
+        document.location.reload();
+      } else {
+        alert(data.data);
+      }
+    });
 });
 
 $(function () {
