@@ -1,8 +1,136 @@
 <h2>Course Detail</h2>
 
-You are choosing "XXX id course_type ..." course
-one course here:
+<div class="container py-5 h-100 addCourseContainer">
+    <div class="row justify-content-around align-items-center h-100">
+        <div class="col-12">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+                <div class="card-body p-4 p-md-5">
+                    <form action="" id="displayCourse">
+                        <input type="hidden" class="courseID" value={{id}}>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Course Name</h5>
+                                            <p id="course_name">{{course_name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-{{>courseDetail}}
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Instructor Name</h5>
+                                            <p id="instructor_name">{{instructor_name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
 
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Sport Type</h5>
+                                            <p id="sport_type">{{sport_name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Room</h5>
+                                            <p id="room_name">{{room_name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Description</h5>
+                                            <p id="description_text">{{description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Quota</h5>
+                                            <p id="quota">{{quota}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Date</h5>
+                                            <p id="date">{{date}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <h5>Time Slot</h5>
+                                            <p id="time_slot">{{time_slot}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <input class="btn bookingBtn detailBookingBtn" type="button" value="Book" data-bs-toggle="modal"
+                                            data-bs-target="#bookingConfirmation" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-12 mb-4 d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="addCourseImg"></label>
+                                            <div class="box">
+                                                <div id="courseIMG">
+                                                    <img src="{{image}}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="bookingConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Confirm Booking</h5>
+                                                </div>
+                                                <div class="booking-modal-body">
+                                                    ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Cancel</button>
+                                                    <button type="button" class="btn btn-primary" id="confirmBookingBtn">Confirm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

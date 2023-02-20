@@ -16,7 +16,7 @@ class PageRouter {
     router.get("/mycourse", this.userIsLoggedIn, this.userCourse.bind(this));
     router.get("/course", this.userIsLoggedIn, this.courseList.bind(this));
     router.get(
-      "/course/detail",
+      "/course/detail/:courseID",
       this.userIsLoggedIn,
       this.courseDetail.bind(this)
     );
@@ -31,6 +31,11 @@ class PageRouter {
       "/instructor/course",
       this.instructorIsLoggedIn,
       this.instructorCourseList.bind(this)
+    );
+    router.get(
+      "/instructor/course/detail/:courseID",
+      this.instructorIsLoggedIn,
+      this.instructorCourseDetail.bind(this)
     );
     router.get(
       "/instructor/manage_course",
@@ -68,13 +73,18 @@ class PageRouter {
   }
 
   userCourse(req, res) {
-    this.courseService.userMyCourse(req.user.id).then((data) => {
-      console.log(data);
+    var user_name;
+    this.profileService
+      .displayUser(req.user.id)
+      .then((data) => (user_name = data[0]["user_name"]))
+      .then(
+        this.courseService.userMyCourse(req.user.id).then((data) => {
           res.render("user/myCourse", {
-            user: req.user.username,
-            myCourse: data
+            user: user_name,
+            myCourse: data,
           });
-    })
+        })
+      );
   }
 
   courseList(req, res) {
@@ -82,13 +92,26 @@ class PageRouter {
   }
 
   courseDetail(req, res) {
-    res.render("user/courseDetail");
+    this.courseService.userCourseDetail(req.params.courseID).then((data) => {
+      res.render(`user/courseDetail`, {
+        id: data[0]["id"],
+        course_name: data[0]["course_name"],
+        instructor_name: data[0]["name"],
+        sport_name: data[0]["sport_name"],
+        room_name: data[0]["room_name"],
+        description: data[0]["description"],
+        quota: data[0]["quota"],
+        date: data[0]["date"],
+        time_slot: data[0]["time_slot"],
+        image: data[0]["image_path"],
+      });
+    });
   }
 
   userProfile(req, res) {
     this.profileService.displayUser(req.user.id).then((data) => {
       res.render("user/userProfile", {
-        name: data[0]["name"],
+        name: data[0]["user_name"],
         email: data[0]["email"],
         phone_number: data[0]["phone_number"],
         joined_at: data[0]["joined_at"],
@@ -108,8 +131,38 @@ class PageRouter {
     res.render("instructor/courseList", { layout: "main_instructor" });
   }
 
+  instructorCourseDetail(req, res) {
+    this.courseService.instructorCourseDetail(req.params.courseID).then((data) => {
+      res.render(`instructor/courseDetail`, {
+        layout: "main_instructor",
+        id: data[0]["id"],
+        course_name: data[0]["course_name"],
+        instructor_name: data[0]["name"],
+        sport_name: data[0]["sport_name"],
+        room_name: data[0]["room_name"],
+        description: data[0]["description"],
+        quota: data[0]["quota"],
+        date: data[0]["date"],
+        time_slot: data[0]["time_slot"],
+        image: data[0]["image_path"],
+      });
+    });
+  }
+
   instructorManageCourse(req, res) {
-    res.render("instructor/manageCourse", { layout: "main_instructor" });
+    var instructor_name;
+    this.profileService
+      .displayInstructor(req.user.id)
+      .then((data) => (instructor_name = data[0]["name"]))
+      .then(
+        this.courseService.instructorMyCourse(req.user.id).then((data) => {
+          res.render("instructor/manageCourse", {
+            layout: "main_instructor",
+            instructor: instructor_name,
+            myCourse: data,
+          });
+        })
+      );
   }
 
   instructorAddCourse(req, res) {

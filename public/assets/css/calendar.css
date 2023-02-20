@@ -1,0 +1,202 @@
+/* for user course page, calendar */
+.calendar {
+  position: relative;
+  background-color: transparent;
+  margin-top: 20px;
+  min-height: 50vh;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 20px -5px rgba(101, 95, 95, 1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#noPadding {
+  padding: 0;
+}
+
+.calendar__picture {
+  position: relative;
+  height: 100%;
+  padding: 20px;
+  color: #fff;
+  background-image: url("https://media.istockphoto.com/id/1050371496/photo/fitness-females-doing-backbend-exercise-on-yoga-mat-in-class.jpg?s=612x612&w=0&k=20&c=wE1LdTgew2dVnXYhCwdPP7Iu3kQH8kLX8BC9mpmkLqE=");
+  background-size: 100%;
+  background-position: center;
+  box-sizing: border-box;
+}
+
+.calendar__date {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  grid-gap: 0px;
+  box-sizing: border-box;
+}
+
+.calendar__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.calendar__daynumber {
+  padding: 10px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  grid-gap: 00px;
+  box-sizing: border-box;
+}
+
+.calendar__number {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 7.05);
+  color: #262626;
+  padding-bottom: 8px;
+}
+
+.calendar__number--current span {
+  background-color: rgb(54, 123, 67);
+  border-radius: 100%;
+  color: #fff !important;
+  font-weight: 500;
+  cursor: pointer;
+  /* box-shadow: 7px 5px 22px 1px rgba(0, 0, 0, 0.82);
+    -webkit-box-shadow: 7px 5px 22px 1px rgba(0, 0, 0, 0.82);
+    -moz-box-shadow: 7px 5px 22px 1px rgba(0, 0, 0, 0.82); */
+}
+
+/* sunday CSS */
+.current_month:nth-child(7n + 1),
+.current_month:nth-child(1),
+.calendar__day:nth-child(1) {
+  color: #cd0000;
+  font-weight: 500;
+}
+
+#cnd-month-back,
+#cnd-month-next {
+  cursor: pointer;
+  color: #fff;
+}
+.day_circle {
+  font-size: max(1.2vw, 15px);
+  height: 3rem;
+  width: 3rem;
+  /* padding: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current_month .day_circle:hover:not(.calendar__number--current span) {
+  background-color: rgb(241, 90, 34);
+  border-radius: 100%;
+  color: #fff !important;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.calendar__nextday,
+.calendar__prevday {
+  color: #5c5c5c;
+  opacity: 0.5;
+}
+
+.calendar__nextday .day_circle,
+.calendar__prevday .day_circle {
+  cursor: not-allowed;
+}
+
+/* .day_selected{
+    background-color: rgb(208, 82, 14);
+    border-radius: 100%;
+    color: #fff !important;
+    font-weight: 500;
+    cursor: pointer;
+} */
+
+.courseList {
+  width: 100%;
+}
+
+.courseListItem {
+  padding: 0 20px;
+  position: relative;
+  border-bottom: 1px solid #666;
+  padding-top: 5px;
+}
+
+.courseListItem h5,
+.courseListItem h6 {
+  color: #262626;
+}
+
+.courseListItem p {
+  color: #666;
+}
+
+.courseListItem .courseName {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.courseListItem .courseTime h6 {
+  font-weight: 300;
+}
+
+.courseDataLeft,
+.courseDataRight,
+.courseDataMiddle {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.courseListItem:nth-child(even) {
+  background-color: rgba(255, 200, 100, 0.5);
+}
+
+.courseButtons {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .courseButtons {
+    flex-direction: column;
+  }
+}
+
+.courseListItem .courseDetail:hover {
+  color: rgba(241, 90, 34, 1);
+  cursor: pointer;
+}
+
+.courseListItem .bookingBtn,
+.courseListItem .cancelBtn {
+  margin-left: 20px;
+  color: white;
+  background-color: rgba(241, 90, 34, 1);
+  border-radius: 50px;
+}
+
+.courseListItem .bookingBtn:hover,
+.courseListItem .cancelBtn:hover {
+  color: rgba(241, 90, 34, 1);
+  background-color: #fff;
+  border: 1px solid rgba(241, 90, 34, 1);
+}

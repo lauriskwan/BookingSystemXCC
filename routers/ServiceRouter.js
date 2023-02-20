@@ -1,18 +1,10 @@
 class ServiceRouter {
-  constructor(
-    express,
-    fs,
-    uploadDirectory,
-    courseService,
-    profileService,
-    instructorAddCourseService
-  ) {
+  constructor(express, fs, uploadDirectory, courseService, profileService) {
     this.express = express;
     this.fs = fs;
     this.uploadDirectory = uploadDirectory;
     this.courseService = courseService;
     this.profileService = profileService;
-    this.instructorAddCourseService = instructorAddCourseService;
   }
 
   router() {
@@ -24,6 +16,13 @@ class ServiceRouter {
       return this.courseService
         .getCourse(req.query.date)
         .then((data) => res.send(data));
+    });
+
+    // Course quota
+    router.get("/quota/:courseID", (req, res) => {
+      return this.courseService.getQuota(req.params.courseID).then((data) => {
+        res.send(data);
+      });
     });
 
     // Booking
@@ -42,14 +41,20 @@ class ServiceRouter {
               if (data.length > 0) {
                 res.send("already booked");
               } else {
-                return this.courseService.book(
-                  req.user.id,
-                  req.params.courseID
-                ).then(res.send("success"));
+                return this.courseService
+                  .book(req.user.id, req.params.courseID)
+                  .then(res.send("success"));
               }
             });
         }
       });
+    });
+
+    // Cancel booking
+    router.delete("/course/cancel/:courseID", (req, res) => {
+      return this.courseService
+        .cancelBooking(req.params.courseID, req.user.id)
+        .then(res.send("cancelled successfully"));
     });
 
     // Edit user profile
@@ -78,10 +83,9 @@ class ServiceRouter {
     });
 
     // Instructor add course
-
     router.post("/instructor/add_course", (req, res) => {
       if (req.files === null) {
-        return this.instructorAddCourseService
+        return this.courseService
           .addCourse(
             req.user.id,
             req.body.course_name,
@@ -92,7 +96,7 @@ class ServiceRouter {
             req.body.date,
             req.body.time_slot_id
           )
-          .then(res.status(200));
+          .then(res.redirect("/instructor/manage_course"));
         // } else {
         //   console.log(req.files.upload);
       } else {
@@ -107,7 +111,7 @@ class ServiceRouter {
         )
           .then((path) => (image_path = path))
           .then(() => {
-            this.instructorAddCourseService.addCourse(
+            this.courseService.addCourse(
               req.user.id,
               req.body.course_name,
               req.body.room_id,
@@ -119,10 +123,15 @@ class ServiceRouter {
               image_path
             );
           })
-          .then((msg) => {
-            res.status(200).json(msg);
-          });
+          .then(res.redirect("/instructor/manage_course"));
       }
+    });
+
+    // Instructor remove course
+    router.delete("/course/remove/:courseID", (req, res) => {
+      return this.courseService
+        .cancelCourse(req.params.courseID, req.user.id)
+        .then(res.send("cancelled successfully"));
     });
 
     return router;
@@ -157,8 +166,19 @@ class ServiceRouter {
         )
       ) {
         // check if the file exists in the directory "uploaded"
+        // resolve(
+        //   this.uploadDirectory +
+        //     "/" +
+        //     date +
+        //     "_" +
+        //     time +
+        //     "_" +
+        //     room +
+        //     "_" +
+        //     name
+        // );
         resolve(
-          this.uploadDirectory +
+          "http://localhost:8080/assets/uploadedImages" +
             "/" +
             date +
             "_" +

@@ -1,4 +1,5 @@
 The design is not supporting:
 
-1. self-registration of instructor;
-2. payment system, hence user-conducted extension of membership expiry date.
+- self-registration of instructor;
+- self-editing of course detail by instructor.
+- payment system, hence user-conducted extension of membership expiry date.

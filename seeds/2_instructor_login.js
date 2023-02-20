@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
     },
     {
       username: "TestInstructor2Acc",
-      password: "876543",
+      password: "123456",
       instructor_id: 2,
     },
   ]);

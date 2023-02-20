@@ -1,18 +1,55 @@
-<h2>Manage Course Here</h2>
+<h2>Hello, {{instructor}}!</h2>
 
-One course here:
-{{!-- {{#each }}
-{{#if}} --}}
-{{>courseDetail}}
-{{!-- {{else}}
-<p>You don't have class currently.</p>
-{{/if}}
-{{/each}} --}}
+<div class="myCourse">
+    <h5 class="my-5">Upcoming course(s):</h5>
+    {{#each myCourse}}
+    <div class="container courseListItem" id="myCourseList">
+        <div class="courseButtons">
+            <input type="hidden" class="courseID" value={{id}}>
+            <a href="/instructor/course/detail/{{id}}">
+                <p class="courseDetail">Course Detail</p>
+            </a>
+            <input class="btn cancelBtn" type="button" value="Cancel" data-bs-toggle="modal"
+                data-bs-target="#cancelCourse" />
+        </div>
+        <div class="row">
+            <div class="courseDataLeft col-lg-3 col-sm-12">
+                <div class="courseDate">
+                    <p>Date: {{date}}</p>
+                </div>
+                <div class="courseTime">
+                    <p>Time: {{time_slot}}</p>
+                </div>
+            </div>
+            <div class="courseDataMiddle col-lg-3 col-sm-12">
+                <div class="courseName">
+                    <p><span style="font-weight: 300; text-transform: none;">Course:</span> <span
+                            id="course_name">{{course_name}}</span> ({{sport_name}})</p>
+                </div>
+                <div class="courseRoom">
+                    <p>Room: {{room_name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
 
-Your Course:
-<p>(Use the instructor add Course Template)</p>
-<ul>
-    <li> <a href="/instructor/add_course">A</a> </li>
-    <li><a href="/instructor/add_course">B</a></li>
-    <li><a href="/instructor/add_course">C</a></li>
-</ul>
+<!-- Modal -->
+<div class="modal fade" id="cancelCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cancel Course</h5>
+            </div>
+            <div class="cancel-modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmCancelBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

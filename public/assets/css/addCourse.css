@@ -11,6 +11,7 @@ h1 {
   width: 400px;
   height: 500px;
   margin: 10px;
+  padding: auto;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -68,6 +69,19 @@ h1 {
   top: 50%;
   transform: translateY(-50%);
   color: #fff;
+}
+
+#courseIMG {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#courseIMG img {
+  width: unset;
+  height: 100%;
+  overflow: unset;
 }
 
 .js--image-preview {
