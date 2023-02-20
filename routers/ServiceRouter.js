@@ -129,10 +129,26 @@ class ServiceRouter {
 
     // Instructor remove course
     router.delete("/course/remove/:courseID", (req, res) => {
-      return this.courseService
-        .cancelCourse(req.params.courseID, req.user.id)
-        .then(res.send("cancelled successfully"));
+      return this.courseService.getQuota(req.params.courseID).then((data) => {
+        if (data[0]["count"] > 0) {
+          res.send("users exist");
+        } else {
+          return this.courseService
+            .cancelCourse(req.params.courseID, req.user.id)
+            .then(res.send("cancelled successfully"));
+        }
+      });
     });
+
+    router.delete("/course/remove/confirmed/:courseID", (req, res) => {
+      return this.courseService
+        .removeUsers(req.params.courseID)
+        .then(
+          this.courseService
+            .cancelCourse(req.params.courseID, req.user.id)
+            .then(res.send("cancelled successfully"))
+        );
+    })
 
     return router;
   }
