@@ -3,3 +3,5 @@ node_modules
 .vscode
 .desktop.ini
 note.txt
+test.js
+public/assets/uploadedImages

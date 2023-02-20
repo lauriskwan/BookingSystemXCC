@@ -13,7 +13,7 @@ module.exports = (passport, knex) => {
       // { usernameField: "email", passReqToCallback: true } if register using email
       { passReqToCallback: true },
       async (req, username, password, done) => {
-        const name = req.body.name;
+        const user_name = req.body.name;
         const gender = req.body.gender;
         const phone_number = req.body.phone_number;
         const email = req.body.email;
@@ -31,7 +31,7 @@ module.exports = (passport, knex) => {
 
         // Insert general information to users
         let newUser = {
-          name,
+          user_name,
           gender,
           phone_number,
           email,

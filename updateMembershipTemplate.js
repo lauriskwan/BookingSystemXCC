@@ -1,3 +1,6 @@
+const knexFile = require("./knexfile").development;
+const knex = require("knex")(knexFile);
+
 knex("users")
   .update({
     is_member: true,

@@ -19,10 +19,9 @@
   height: 100%;
   padding: 20px;
   color: #fff;
-  background: #262626
-    url("https://images.unsplash.com/photo-1516912481808-3406841bd33c?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=183f2924ba5a8429441804609b2d4f61")
-    no-repeat center / cover;
-  text-shadow: 0 2px 2px rgba(#000, 0.2);
+  background-image: url("https://media.istockphoto.com/id/1050371496/photo/fitness-females-doing-backbend-exercise-on-yoga-mat-in-class.jpg?s=612x612&w=0&k=20&c=wE1LdTgew2dVnXYhCwdPP7Iu3kQH8kLX8BC9mpmkLqE=");
+  background-size: 100%;
+  background-position: center;
   box-sizing: border-box;
 }
 
@@ -154,7 +153,8 @@
 }
 
 .courseDataLeft,
-.courseDataRight {
+.courseDataRight,
+.courseDataMiddle {
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -175,19 +175,27 @@
   justify-content: center;
 }
 
-.courseList .courseDetail:hover {
+@media (max-width: 768px) {
+  .courseButtons {
+    flex-direction: column;
+  }
+}
+
+.courseListItem .courseDetail:hover {
   color: rgba(241, 90, 34, 1);
   cursor: pointer;
 }
 
-.courseList .bookingBtn {
+.courseListItem .bookingBtn,
+.courseListItem .cancelBtn {
   margin-left: 20px;
   color: white;
   background-color: rgba(241, 90, 34, 1);
   border-radius: 50px;
 }
 
-.courseList .bookingBtn:hover {
+.courseListItem .bookingBtn:hover,
+.courseListItem .cancelBtn:hover {
   color: rgba(241, 90, 34, 1);
   background-color: #fff;
   border: 1px solid rgba(241, 90, 34, 1);

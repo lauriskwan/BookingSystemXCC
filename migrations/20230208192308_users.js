@@ -5,7 +5,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable("users", function (table) {
     table.increments();
-    table.string("name").notNullable();
+    table.string("user_name").notNullable();
     table.boolean("gender").notNullable();
     table.string("phone_number").defaultTo(null);
     table.string("email").notNullable();

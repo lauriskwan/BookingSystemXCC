@@ -23,9 +23,6 @@ const CourseService = require("./Service/CourseService");
 const courseService = new CourseService(knex);
 const ProfileService = require("./Service/ProfileService");
 const profileService = new ProfileService(knex);
-const InstructorAddCourseService = require("./Service/Instructor/InstructorAddCourseService");
-const instructorAddCourseService = new InstructorAddCourseService(knex);
-
 
 const setupPassport = require("./setupPassport");
 
@@ -79,7 +76,6 @@ app.use(
     uploadDirectory,
     courseService,
     profileService,
-    instructorAddCourseService
   ).router()
 );
 

@@ -1,1 +1,46 @@
 <h2>Schedule</h2>
+
+<div class="container calendar mb-3">
+    <div class="row">
+        <div class="col-md-4 col-sm-12" id="noPadding">
+            <div class="calendar__picture d-flex align-items-center flex-wrap flex-column;">
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <div class="row mt-3" style="height:70px;">
+                <div class="col-2 d-flex justify-content-center align-items-center"><span
+                        id="cnd-month-back">Back</span></div>
+                <div class="col-8 d-flex justify-content-center align-items-center">
+                    <h2 id="cnd-month"></h2>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center"><span
+                        id="cnd-month-next">Next</span></div>
+            </div>
+            <div class="row">
+                <div class="calendar__date col-12 text-center">
+                    <div class="calendar__day" week-id="1">Sun</div>
+                    <div class="calendar__day" week-id="2">Mon</div>
+                    <div class="calendar__day" week-id="3">Tue</div>
+                    <div class="calendar__day" week-id="4">Wes</div>
+                    <div class="calendar__day" week-id="5">Thr</div>
+                    <div class="calendar__day" week-id="6">Fri</div>
+                    <div class="calendar__day" week-id="7">Sat</div>
+                </div>
+            </div>
+            <div class="row">
+                {{!-- form should be set to type="hidden" --}}
+                <form action="" method="" id="get_date_form">
+                    <input id="get_date" type="hidden" value="day" size="15">
+                </form>
+                <div class="calendar__daynumber col-12 d-flex justify-items-center flex-wrap">
+                    {{!-- days will be generated here --}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class="mt-5" id="dateTitle"></h5>
+
+{{>listForCourse}}
